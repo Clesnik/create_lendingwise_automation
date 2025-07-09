@@ -1035,28 +1035,26 @@ async def run_playwright_actions(request: ActionRequest):
         results.append("Waited 1s for new rent roll form to render")
 
         # Rent Roll Entry 1_2
-        if request.unit_type_1_2 is not None:
+        if request.unit_type_1_2 is not None and request.unit_type_1_2.strip() != "":
             await page.click('div#unitType_1_2_chosen')
-            dropdown_option = page.locator('div#unitType_1_2_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_2)
-            await dropdown_option.wait_for(timeout=5000)
-            await dropdown_option.click()
+            await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_2}")')
             results.append(f"Selected unit type {request.unit_type_1_2} for entry 1_2")
-        if request.unit_num_1_2 is not None:
+        if request.unit_num_1_2 is not None and request.unit_num_1_2.strip() != "":
             await page.fill('#unitNum_1_2', value=request.unit_num_1_2)
             results.append(f"Filled #unitNum_1_2 with {request.unit_num_1_2}")
-        if request.sq_ft_1_2 is not None:
+        if request.sq_ft_1_2 is not None and request.sq_ft_1_2.strip() != "":
             await page.fill('#sqFt_1_2', value=request.sq_ft_1_2)
             results.append(f"Filled #sqFt_1_2 with {request.sq_ft_1_2}")
-        if request.rent_roll_market_rents_1_2 is not None:
+        if request.rent_roll_market_rents_1_2 is not None and request.rent_roll_market_rents_1_2.strip() != "":
             await page.fill('#rentRollMarketRents_1_2', value=request.rent_roll_market_rents_1_2)
             results.append(f"Filled #rentRollMarketRents_1_2 with {request.rent_roll_market_rents_1_2}")
-        if request.rent_roll_actual_rents_1_2 is not None:
+        if request.rent_roll_actual_rents_1_2 is not None and request.rent_roll_actual_rents_1_2.strip() != "":
             await page.fill('#rentRollActualRents_1_2', value=request.rent_roll_actual_rents_1_2)
             results.append(f"Filled #rentRollActualRents_1_2 with {request.rent_roll_actual_rents_1_2}")
-        if request.rent_roll_monthly_rent_1_2 is not None:
+        if request.rent_roll_monthly_rent_1_2 is not None and request.rent_roll_monthly_rent_1_2.strip() != "":
             await page.fill('#rentRollMonthlyRent_1_2', value=request.rent_roll_monthly_rent_1_2)
             results.append(f"Filled #rentRollMonthlyRent_1_2 with {request.rent_roll_monthly_rent_1_2}")
-        if request.rent_roll_vacant_no_1_2 is not None:
+        if request.rent_roll_vacant_no_1_2 is not None and request.rent_roll_vacant_no_1_2.strip() != "":
             await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_2}"]', timeout=10000)
             await page.click(f'label[for="{request.rent_roll_vacant_no_1_2}"]')
             results.append(f"Clicked label for {request.rent_roll_vacant_no_1_2}")
@@ -1066,26 +1064,26 @@ async def run_playwright_actions(request: ActionRequest):
         results.append("Waited 1s for new rent roll form to render")
 
         # Rent Roll Entry 1_3
-        if request.unit_type_1_3 is not None:
+        if request.unit_type_1_3 is not None and request.unit_type_1_3.strip() != "":
             await page.click('div#unitType_1_3_chosen')
             await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_3}")')
             results.append(f"Selected unit type {request.unit_type_1_3} for entry 1_3")
-        if request.unit_num_1_3 is not None:
+        if request.unit_num_1_3 is not None and request.unit_num_1_3.strip() != "":
             await page.fill('#unitNum_1_3', value=request.unit_num_1_3)
             results.append(f"Filled #unitNum_1_3 with {request.unit_num_1_3}")
-        if request.sq_ft_1_3 is not None:
+        if request.sq_ft_1_3 is not None and request.sq_ft_1_3.strip() != "":
             await page.fill('#sqFt_1_3', value=request.sq_ft_1_3)
             results.append(f"Filled #sqFt_1_3 with {request.sq_ft_1_3}")
-        if request.rent_roll_market_rents_1_3 is not None:
+        if request.rent_roll_market_rents_1_3 is not None and request.rent_roll_market_rents_1_3.strip() != "":
             await page.fill('#rentRollMarketRents_1_3', value=request.rent_roll_market_rents_1_3)
             results.append(f"Filled #rentRollMarketRents_1_3 with {request.rent_roll_market_rents_1_3}")
-        if request.rent_roll_actual_rents_1_3 is not None:
+        if request.rent_roll_actual_rents_1_3 is not None and request.rent_roll_actual_rents_1_3.strip() != "":
             await page.fill('#rentRollActualRents_1_3', value=request.rent_roll_actual_rents_1_3)
             results.append(f"Filled #rentRollActualRents_1_3 with {request.rent_roll_actual_rents_1_3}")
-        if request.rent_roll_monthly_rent_1_3 is not None:
+        if request.rent_roll_monthly_rent_1_3 is not None and request.rent_roll_monthly_rent_1_3.strip() != "":
             await page.fill('#rentRollMonthlyRent_1_3', value=request.rent_roll_monthly_rent_1_3)
             results.append(f"Filled #rentRollMonthlyRent_1_3 with {request.rent_roll_monthly_rent_1_3}")
-        if request.rent_roll_vacant_no_1_3 is not None:
+        if request.rent_roll_vacant_no_1_3 is not None and request.rent_roll_vacant_no_1_3.strip() != "":
             await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_3}"]', timeout=10000)
             await page.click(f'label[for="{request.rent_roll_vacant_no_1_3}"]')
             results.append(f"Clicked label for {request.rent_roll_vacant_no_1_3}")
@@ -1095,26 +1093,26 @@ async def run_playwright_actions(request: ActionRequest):
         results.append("Waited 1s for new rent roll form to render")
 
         # Rent Roll Entry 1_4
-        if request.unit_type_1_4 is not None:
+        if request.unit_type_1_4 is not None and request.unit_type_1_4.strip() != "":
             await page.click('div#unitType_1_4_chosen')
             await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_4}")')
             results.append(f"Selected unit type {request.unit_type_1_4} for entry 1_4")
-        if request.unit_num_1_4 is not None:
+        if request.unit_num_1_4 is not None and request.unit_num_1_4.strip() != "":
             await page.fill('#unitNum_1_4', value=request.unit_num_1_4)
             results.append(f"Filled #unitNum_1_4 with {request.unit_num_1_4}")
-        if request.sq_ft_1_4 is not None:
+        if request.sq_ft_1_4 is not None and request.sq_ft_1_4.strip() != "":
             await page.fill('#sqFt_1_4', value=request.sq_ft_1_4)
             results.append(f"Filled #sqFt_1_4 with {request.sq_ft_1_4}")
-        if request.rent_roll_market_rents_1_4 is not None:
+        if request.rent_roll_market_rents_1_4 is not None and request.rent_roll_market_rents_1_4.strip() != "":
             await page.fill('#rentRollMarketRents_1_4', value=request.rent_roll_market_rents_1_4)
             results.append(f"Filled #rentRollMarketRents_1_4 with {request.rent_roll_market_rents_1_4}")
-        if request.rent_roll_actual_rents_1_4 is not None:
+        if request.rent_roll_actual_rents_1_4 is not None and request.rent_roll_actual_rents_1_4.strip() != "":
             await page.fill('#rentRollActualRents_1_4', value=request.rent_roll_actual_rents_1_4)
             results.append(f"Filled #rentRollActualRents_1_4 with {request.rent_roll_actual_rents_1_4}")
-        if request.rent_roll_monthly_rent_1_4 is not None:
+        if request.rent_roll_monthly_rent_1_4 is not None and request.rent_roll_monthly_rent_1_4.strip() != "":
             await page.fill('#rentRollMonthlyRent_1_4', value=request.rent_roll_monthly_rent_1_4)
             results.append(f"Filled #rentRollMonthlyRent_1_4 with {request.rent_roll_monthly_rent_1_4}")
-        if request.rent_roll_vacant_no_1_4 is not None:
+        if request.rent_roll_vacant_no_1_4 is not None and request.rent_roll_vacant_no_1_4.strip() != "":
             await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_4}"]', timeout=10000)
             await page.click(f'label[for="{request.rent_roll_vacant_no_1_4}"]')
             results.append(f"Clicked label for {request.rent_roll_vacant_no_1_4}")
@@ -1124,26 +1122,26 @@ async def run_playwright_actions(request: ActionRequest):
         results.append("Waited 1s for new rent roll form to render")
 
         # Rent Roll Entry 1_5
-        if request.unit_type_1_5 is not None:
+        if request.unit_type_1_5 is not None and request.unit_type_1_5.strip() != "":
             await page.click('div#unitType_1_5_chosen')
             await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_5}")')
             results.append(f"Selected unit type {request.unit_type_1_5} for entry 1_5")
-        if request.unit_num_1_5 is not None:
+        if request.unit_num_1_5 is not None and request.unit_num_1_5.strip() != "":
             await page.fill('#unitNum_1_5', value=request.unit_num_1_5)
             results.append(f"Filled #unitNum_1_5 with {request.unit_num_1_5}")
-        if request.sq_ft_1_5 is not None:
+        if request.sq_ft_1_5 is not None and request.sq_ft_1_5.strip() != "":
             await page.fill('#sqFt_1_5', value=request.sq_ft_1_5)
             results.append(f"Filled #sqFt_1_5 with {request.sq_ft_1_5}")
-        if request.rent_roll_market_rents_1_5 is not None:
+        if request.rent_roll_market_rents_1_5 is not None and request.rent_roll_market_rents_1_5.strip() != "":
             await page.fill('#rentRollMarketRents_1_5', value=request.rent_roll_market_rents_1_5)
             results.append(f"Filled #rentRollMarketRents_1_5 with {request.rent_roll_market_rents_1_5}")
-        if request.rent_roll_actual_rents_1_5 is not None:
+        if request.rent_roll_actual_rents_1_5 is not None and request.rent_roll_actual_rents_1_5.strip() != "":
             await page.fill('#rentRollActualRents_1_5', value=request.rent_roll_actual_rents_1_5)
             results.append(f"Filled #rentRollActualRents_1_5 with {request.rent_roll_actual_rents_1_5}")
-        if request.rent_roll_monthly_rent_1_5 is not None:
+        if request.rent_roll_monthly_rent_1_5 is not None and request.rent_roll_monthly_rent_1_5.strip() != "":
             await page.fill('#rentRollMonthlyRent_1_5', value=request.rent_roll_monthly_rent_1_5)
             results.append(f"Filled #rentRollMonthlyRent_1_5 with {request.rent_roll_monthly_rent_1_5}")
-        if request.rent_roll_vacant_no_1_5 is not None:
+        if request.rent_roll_vacant_no_1_5 is not None and request.rent_roll_vacant_no_1_5.strip() != "":
             await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_5}"]', timeout=10000)
             await page.click(f'label[for="{request.rent_roll_vacant_no_1_5}"]')
             results.append(f"Clicked label for {request.rent_roll_vacant_no_1_5}")
