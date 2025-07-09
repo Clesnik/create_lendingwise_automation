@@ -7,145 +7,145 @@ from playwright.async_api import async_playwright
 app = FastAPI()
 
 class ActionRequest(BaseModel):
-    username: str
-    password: str
-    branch_id: str
-    secondary_agent: str
-    loan_program: str
-    internal_program: str
-    prop_process: str
-    primary_status: str
-    lead_source: str
-    referring_party: str
-    pg_one_fname: str
-    pg_one_mname: str
-    pg_one_lname: str
-    pg_one_email: str
-    pg_one_cell: str
-    pg_one_work: str
-    pg_one_street: str
-    pg_one_unit: str
-    pg_one_city: str
-    pg_one_state: str
-    pg_one_zip: str
-    pg_one_county: str
-    pg_one_country: str
-    mailing_street: str
-    mailing_unit: str
-    mailing_city: str
-    mailing_state: str
-    mailing_zip: str
-    mailing_country: str
-    pg_one_dob: str
-    pg_one_ssn: str
-    pg_one_marital_status: str
-    pg_one_citizenship: str
-    pg_one_mid_fico: str
-    pg_one_fico_range: str
-    borrower_type: str
-    entity_name: str
-    trade_name: str
-    entity_type: str
-    date_of_formation: str
-    state_of_formation: str
-    ein_number: str
-    business_phone: str
-    entity_address: str
-    entity_city: str
-    entity_state: str
-    entity_zip: str
-    member_name_zero: str
-    member_title_zero: str
-    member_ownership_zero: str
-    member_address_zero: str
-    member_cell_zero: str
-    member_ssn_zero: str
-    member_dob_zero: str
-    member_email_zero: str
-    member_fico_score_zero: str
+    username: Optional[str] = None
+    password: Optional[str] = None
+    branch_id: Optional[str] = None
+    secondary_agent: Optional[str] = None
+    loan_program: Optional[str] = None
+    internal_program: Optional[str] = None
+    prop_process: Optional[str] = None
+    primary_status: Optional[str] = None
+    lead_source: Optional[str] = None
+    referring_party: Optional[str] = None
+    pg_one_fname: Optional[str] = None
+    pg_one_mname: Optional[str] = None
+    pg_one_lname: Optional[str] = None
+    pg_one_email: Optional[str] = None
+    pg_one_cell: Optional[str] = None
+    pg_one_work: Optional[str] = None
+    pg_one_street: Optional[str] = None
+    pg_one_unit: Optional[str] = None
+    pg_one_city: Optional[str] = None
+    pg_one_state: Optional[str] = None
+    pg_one_zip: Optional[str] = None
+    pg_one_county: Optional[str] = None
+    pg_one_country: Optional[str] = None
+    mailing_street: Optional[str] = None
+    mailing_unit: Optional[str] = None
+    mailing_city: Optional[str] = None
+    mailing_state: Optional[str] = None
+    mailing_zip: Optional[str] = None
+    mailing_country: Optional[str] = None
+    pg_one_dob: Optional[str] = None
+    pg_one_ssn: Optional[str] = None
+    pg_one_marital_status: Optional[str] = None
+    pg_one_citizenship: Optional[str] = None
+    pg_one_mid_fico: Optional[str] = None
+    pg_one_fico_range: Optional[str] = None
+    borrower_type: Optional[str] = None
+    entity_name: Optional[str] = None
+    trade_name: Optional[str] = None
+    entity_type: Optional[str] = None
+    date_of_formation: Optional[str] = None
+    state_of_formation: Optional[str] = None
+    ein_number: Optional[str] = None
+    business_phone: Optional[str] = None
+    entity_address: Optional[str] = None
+    entity_city: Optional[str] = None
+    entity_state: Optional[str] = None
+    entity_zip: Optional[str] = None
+    member_name_zero: Optional[str] = None
+    member_title_zero: Optional[str] = None
+    member_ownership_zero: Optional[str] = None
+    member_address_zero: Optional[str] = None
+    member_cell_zero: Optional[str] = None
+    member_ssn_zero: Optional[str] = None
+    member_dob_zero: Optional[str] = None
+    member_email_zero: Optional[str] = None
+    member_fico_score_zero: Optional[str] = None
     member_guarantor_zero: Optional[str] = None
     member_citizenship_zero: Optional[str] = None
-    member_name_one: str
-    member_title_one: str
-    member_ownership_one: str
-    member_address_one: str
-    member_cell_one: str
-    member_ssn_one: str
-    member_dob_one: str
-    member_email_one: str
-    member_fico_score_one: str
+    member_name_one: Optional[str] = None
+    member_title_one: Optional[str] = None
+    member_ownership_one: Optional[str] = None
+    member_address_one: Optional[str] = None
+    member_cell_one: Optional[str] = None
+    member_ssn_one: Optional[str] = None
+    member_dob_one: Optional[str] = None
+    member_email_one: Optional[str] = None
+    member_fico_score_one: Optional[str] = None
     member_guarantor_one: Optional[str] = None
     member_citizenship_one: Optional[str] = None
-    member_name_two: str
-    member_title_two: str
-    member_ownership_two: str
-    member_address_two: str
-    member_cell_two: str
-    member_ssn_two: str
-    member_dob_two: str
-    member_email_two: str
-    member_fico_score_two: str
+    member_name_two: Optional[str] = None
+    member_title_two: Optional[str] = None
+    member_ownership_two: Optional[str] = None
+    member_address_two: Optional[str] = None
+    member_cell_two: Optional[str] = None
+    member_ssn_two: Optional[str] = None
+    member_dob_two: Optional[str] = None
+    member_email_two: Optional[str] = None
+    member_fico_score_two: Optional[str] = None
     member_guarantor_two: Optional[str] = None
     member_citizenship_two: Optional[str] = None
-    member_name_three: str
-    member_title_three: str
-    member_ownership_three: str
-    member_address_three: str
-    member_cell_three: str
-    member_ssn_three: str
-    member_dob_three: str
-    member_email_three: str
-    member_fico_score_three: str
+    member_name_three: Optional[str] = None
+    member_title_three: Optional[str] = None
+    member_ownership_three: Optional[str] = None
+    member_address_three: Optional[str] = None
+    member_cell_three: Optional[str] = None
+    member_ssn_three: Optional[str] = None
+    member_dob_three: Optional[str] = None
+    member_email_three: Optional[str] = None
+    member_fico_score_three: Optional[str] = None
     member_guarantor_three: Optional[str] = None
     member_citizenship_three: Optional[str] = None
-    member_name_four: str
-    member_title_four: str
-    member_ownership_four: str
-    member_address_four: str
-    member_cell_four: str
-    member_ssn_four: str
-    member_dob_four: str
-    member_email_four: str
-    member_fico_score_four: str
+    member_name_four: Optional[str] = None
+    member_title_four: Optional[str] = None
+    member_ownership_four: Optional[str] = None
+    member_address_four: Optional[str] = None
+    member_cell_four: Optional[str] = None
+    member_ssn_four: Optional[str] = None
+    member_dob_four: Optional[str] = None
+    member_email_four: Optional[str] = None
+    member_fico_score_four: Optional[str] = None
     member_guarantor_four: Optional[str] = None
     member_citizenship_four: Optional[str] = None
-    member_name_five: str
-    member_title_five: str
-    member_ownership_five: str
-    member_address_five: str
-    member_cell_five: str
-    member_ssn_five: str
-    member_dob_five: str
-    member_email_five: str
-    member_fico_score_five: str
+    member_name_five: Optional[str] = None
+    member_title_five: Optional[str] = None
+    member_ownership_five: Optional[str] = None
+    member_address_five: Optional[str] = None
+    member_cell_five: Optional[str] = None
+    member_ssn_five: Optional[str] = None
+    member_dob_five: Optional[str] = None
+    member_email_five: Optional[str] = None
+    member_fico_score_five: Optional[str] = None
     member_guarantor_five: Optional[str] = None
     member_citizenship_five: Optional[str] = None
-    additional_guarantors: str
-    pg_three_fname: str
-    pg_three_mname: str
-    pg_three_lname: str
-    pg_three_cell: str
-    pg_three_ssn: str
-    pg_three_dob: str
-    pg_three_marital_status: str
-    pg_three_street: str
-    pg_three_city: str
-    pg_three_state: str
-    pg_three_zip: str
-    pg_three_email: str
+    additional_guarantors: Optional[str] = None
+    pg_three_fname: Optional[str] = None
+    pg_three_mname: Optional[str] = None
+    pg_three_lname: Optional[str] = None
+    pg_three_cell: Optional[str] = None
+    pg_three_ssn: Optional[str] = None
+    pg_three_dob: Optional[str] = None
+    pg_three_marital_status: Optional[str] = None
+    pg_three_street: Optional[str] = None
+    pg_three_city: Optional[str] = None
+    pg_three_state: Optional[str] = None
+    pg_three_zip: Optional[str] = None
+    pg_three_email: Optional[str] = None
     pg_three_citizenship: Optional[str] = None
-    pg_four_fname: str
-    pg_four_mname: str
-    pg_four_lname: str
-    pg_four_cell: str
-    pg_four_ssn: str
-    pg_four_dob: str
-    pg_four_marital_status: str
-    pg_four_street: str
-    pg_four_city: str
-    pg_four_state: str
-    pg_four_zip: str
-    pg_four_email: str
+    pg_four_fname: Optional[str] = None
+    pg_four_mname: Optional[str] = None
+    pg_four_lname: Optional[str] = None
+    pg_four_cell: Optional[str] = None
+    pg_four_ssn: Optional[str] = None
+    pg_four_dob: Optional[str] = None
+    pg_four_marital_status: Optional[str] = None
+    pg_four_street: Optional[str] = None
+    pg_four_city: Optional[str] = None
+    pg_four_state: Optional[str] = None
+    pg_four_zip: Optional[str] = None
+    pg_four_email: Optional[str] = None
     pg_four_citizenship: Optional[str] = None
     is_bankrupt: Optional[str] = None
     is_outstanding_judgement: Optional[str] = None
@@ -163,43 +163,43 @@ class ActionRequest(BaseModel):
     rentals_owned: Optional[str] = None
     have_professional_licences: Optional[str] = None
     professional_licences: Optional[str] = None
-    liquid_assets: str
-    desired_closing_date: str
-    desired_loan_amount: str
-    type_of_loan_requesting: str
-    trial_payment_date: str
-    maturity_date: str
-    loan_term: str
-    interest_rate: str
-    lien_terms: str
+    liquid_assets: Optional[str] = None
+    desired_closing_date: Optional[str] = None
+    desired_loan_amount: Optional[str] = None
+    type_of_loan_requesting: Optional[str] = None
+    trial_payment_date: Optional[str] = None
+    maturity_date: Optional[str] = None
+    loan_term: Optional[str] = None
+    interest_rate: Optional[str] = None
+    lien_terms: Optional[str] = None
     amortization_type: Optional[str] = None
     is_taxes_ins_escrowed: Optional[str] = None
-    taxes: str
-    annual_premium: str
-    cost_basis: str
-    home_value: str
-    max_amount_to_put_down: str
-    subject_property_address: str
-    subject_property_unit: str
-    subject_property_city: str
-    subject_property_state: str
-    subject_property_zip: str
-    subject_property_county: str
-    subject_property_apn: str
-    subject_property_block: str
-    subject_property_lot: str
-    subject_property_type: str
-    subject_property_sqft: str
-    subject_property_acres: str
-    subject_property_year_built: str
-    bedrooms: str
-    bathrooms: str
-    half_bathrooms: str
-    number_of_buildings: str
-    number_of_units_occupied: str
-    number_of_parcels: str
-    estimated_property_value: str
-    present_occupancy: str
+    taxes: Optional[str] = None
+    annual_premium: Optional[str] = None
+    cost_basis: Optional[str] = None
+    home_value: Optional[str] = None
+    max_amount_to_put_down: Optional[str] = None
+    subject_property_address: Optional[str] = None
+    subject_property_unit: Optional[str] = None
+    subject_property_city: Optional[str] = None
+    subject_property_state: Optional[str] = None
+    subject_property_zip: Optional[str] = None
+    subject_property_county: Optional[str] = None
+    subject_property_apn: Optional[str] = None
+    subject_property_block: Optional[str] = None
+    subject_property_lot: Optional[str] = None
+    subject_property_type: Optional[str] = None
+    subject_property_sqft: Optional[str] = None
+    subject_property_acres: Optional[str] = None
+    subject_property_year_built: Optional[str] = None
+    bedrooms: Optional[str] = None
+    bathrooms: Optional[str] = None
+    half_bathrooms: Optional[str] = None
+    number_of_buildings: Optional[str] = None
+    number_of_units_occupied: Optional[str] = None
+    number_of_parcels: Optional[str] = None
+    estimated_property_value: Optional[str] = None
+    present_occupancy: Optional[str] = None
 
 async def run_playwright_actions(request: ActionRequest):
     results = []
