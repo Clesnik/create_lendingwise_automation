@@ -461,8 +461,452 @@ async def run_playwright_actions(request: ActionRequest):
         await page.wait_for_timeout(1000)
         results.append("Waited 1s for new member form (1)")
 
-        # Repeat for members 2, 3, 4, 5, additional_guarantors, pg_three, pg_four, and all other actions as in your script
-        # For brevity, only member 1 is shown here, but you should continue this pattern for all remaining actions.
+        # After member_citizenship_one
+        await page.click('span[onclick*="showAndHidePropertyValuationInfo"]')
+        results.append("Clicked add member/officer (2)")
+        await page.wait_for_timeout(1000)
+        results.append("Waited 1s for new member form (2)")
+        if request.member_name_two is not None:
+            await page.fill('#memberName2', value=request.member_name_two)
+            results.append(f"Filled #memberName2 with {request.member_name_two}")
+        if request.member_title_two is not None:
+            await page.fill('#memberTitle2', value=request.member_title_two)
+            results.append(f"Filled #memberTitle2 with {request.member_title_two}")
+        if request.member_ownership_two is not None:
+            await page.fill('#memberOwnership2', value=request.member_ownership_two)
+            results.append(f"Filled #memberOwnership2 with {request.member_ownership_two}")
+        if request.member_address_two is not None:
+            await page.fill('#memberAddress2', value=request.member_address_two)
+            results.append(f"Filled #memberAddress2 with {request.member_address_two}")
+        if request.member_cell_two is not None:
+            await page.fill('#memberCell2', value=request.member_cell_two)
+            results.append(f"Filled #memberCell2 with {request.member_cell_two}")
+        if request.member_ssn_two is not None:
+            await page.fill('#memberSSN2', value=request.member_ssn_two)
+            results.append(f"Filled #memberSSN2 with {request.member_ssn_two}")
+        if request.member_dob_two is not None:
+            await page.fill('#memberDOB2', value=request.member_dob_two)
+            results.append(f"Filled #memberDOB2 with {request.member_dob_two}")
+            await page.click('body', position={'x': 10, 'y': 10})
+            results.append("Clicked body after memberDOB2")
+        if request.member_email_two is not None:
+            await page.fill('#memberEmail2', value=request.member_email_two)
+            results.append(f"Filled #memberEmail2 with {request.member_email_two}")
+        if request.member_fico_score_two is not None:
+            await page.fill('#memberCreditScore2', value=request.member_fico_score_two)
+            results.append(f"Filled #memberCreditScore2 with {request.member_fico_score_two}")
+        if request.member_guarantor_two is not None:
+            await page.wait_for_selector(f'label[for="{request.member_guarantor_two}"]', timeout=10000)
+            await page.click(f'label[for="{request.member_guarantor_two}"]')
+            results.append(f"Clicked label for {request.member_guarantor_two}")
+        if request.member_citizenship_two is not None:
+            await page.wait_for_selector(f'label[for="{request.member_citizenship_two}"]', timeout=10000)
+            await page.click(f'label[for="{request.member_citizenship_two}"]')
+            results.append(f"Clicked label for {request.member_citizenship_two}")
+        await page.click('span[onclick*="showAndHidePropertyValuationInfo"]')
+        results.append("Clicked add member/officer (3)")
+        if request.member_name_three is not None:
+            await page.fill('#memberName3', value=request.member_name_three)
+            results.append(f"Filled #memberName3 with {request.member_name_three}")
+        if request.member_title_three is not None:
+            await page.fill('#memberTitle3', value=request.member_title_three)
+            results.append(f"Filled #memberTitle3 with {request.member_title_three}")
+        if request.member_ownership_three is not None:
+            await page.fill('#memberOwnership3', value=request.member_ownership_three)
+            results.append(f"Filled #memberOwnership3 with {request.member_ownership_three}")
+        if request.member_address_three is not None:
+            await page.fill('#memberAddress3', value=request.member_address_three)
+            results.append(f"Filled #memberAddress3 with {request.member_address_three}")
+        if request.member_cell_three is not None:
+            await page.fill('#memberCell3', value=request.member_cell_three)
+            results.append(f"Filled #memberCell3 with {request.member_cell_three}")
+        if request.member_ssn_three is not None:
+            await page.fill('#memberSSN3', value=request.member_ssn_three)
+            results.append(f"Filled #memberSSN3 with {request.member_ssn_three}")
+        if request.member_dob_three is not None:
+            await page.fill('#memberDOB3', value=request.member_dob_three)
+            results.append(f"Filled #memberDOB3 with {request.member_dob_three}")
+            await page.click('body', position={'x': 10, 'y': 10})
+            results.append("Clicked body after memberDOB3")
+        if request.member_email_three is not None:
+            await page.fill('#memberEmail3', value=request.member_email_three)
+            results.append(f"Filled #memberEmail3 with {request.member_email_three}")
+        if request.member_fico_score_three is not None:
+            await page.fill('#memberCreditScore3', value=request.member_fico_score_three)
+            results.append(f"Filled #memberCreditScore3 with {request.member_fico_score_three}")
+        if request.member_guarantor_three is not None:
+            await page.wait_for_selector(f'label[for="{request.member_guarantor_three}"]', timeout=10000)
+            await page.click(f'label[for="{request.member_citizenship_three}"]')
+            results.append(f"Clicked label for {request.member_guarantor_three}")
+        if request.member_citizenship_three is not None:
+            await page.wait_for_selector(f'label[for="{request.member_citizenship_three}"]', timeout=10000)
+            await page.click(f'label[for="{request.member_citizenship_three}"]')
+            results.append(f"Clicked label for {request.member_citizenship_three}")
+        await page.click('span[onclick*="showAndHidePropertyValuationInfo"]')
+        results.append("Clicked add member/officer (4)")
+        await page.wait_for_timeout(1000)
+        results.append("Waited 1s for new member form (4)")
+        if request.member_name_four is not None:
+            await page.fill('#memberName4', value=request.member_name_four)
+            results.append(f"Filled #memberName4 with {request.member_name_four}")
+        if request.member_title_four is not None:
+            await page.fill('#memberTitle4', value=request.member_title_four)
+            results.append(f"Filled #memberTitle4 with {request.member_title_four}")
+        if request.member_ownership_four is not None:
+            await page.fill('#memberOwnership4', value=request.member_ownership_four)
+            results.append(f"Filled #memberOwnership4 with {request.member_ownership_four}")
+        if request.member_address_four is not None:
+            await page.fill('#memberAddress4', value=request.member_address_four)
+            results.append(f"Filled #memberAddress4 with {request.member_address_four}")
+        if request.member_cell_four is not None:
+            await page.fill('#memberCell4', value=request.member_cell_four)
+            results.append(f"Filled #memberCell4 with {request.member_cell_four}")
+        if request.member_ssn_four is not None:
+            await page.fill('#memberSSN4', value=request.member_ssn_four)
+            results.append(f"Filled #memberSSN4 with {request.member_ssn_four}")
+        if request.member_dob_four is not None:
+            await page.fill('#memberDOB4', value=request.member_dob_four)
+            results.append(f"Filled #memberDOB4 with {request.member_dob_four}")
+            await page.click('body', position={'x': 10, 'y': 10})
+            results.append("Clicked body after memberDOB4")
+        if request.member_email_four is not None:
+            await page.fill('#memberEmail4', value=request.member_email_four)
+            results.append(f"Filled #memberEmail4 with {request.member_email_four}")
+        if request.member_fico_score_four is not None:
+            await page.fill('#memberCreditScore4', value=request.member_fico_score_four)
+            results.append(f"Filled #memberCreditScore4 with {request.member_fico_score_four}")
+        if request.member_guarantor_four is not None:
+            await page.wait_for_selector(f'label[for="{request.member_guarantor_four}"]', timeout=10000)
+            await page.click(f'label[for="{request.member_guarantor_four}"]')
+            results.append(f"Clicked label for {request.member_guarantor_four}")
+        if request.member_citizenship_four is not None:
+            await page.wait_for_selector(f'label[for="{request.member_citizenship_four}"]', timeout=10000)
+            await page.click(f'label[for="{request.member_citizenship_four}"]')
+            results.append(f"Clicked label for {request.member_citizenship_four}")
+        await page.click('span[onclick*="showAndHidePropertyValuationInfo"]')
+        results.append("Clicked add member/officer (5)")
+        await page.wait_for_timeout(1000)
+        results.append("Waited 1s for new member form (5)")
+        if request.member_name_five is not None:
+            await page.fill('#memberName5', value=request.member_name_five)
+            results.append(f"Filled #memberName5 with {request.member_name_five}")
+        if request.member_title_five is not None:
+            await page.fill('#memberTitle5', value=request.member_title_five)
+            results.append(f"Filled #memberTitle5 with {request.member_title_five}")
+        if request.member_ownership_five is not None:
+            await page.fill('#memberOwnership5', value=request.member_ownership_five)
+            results.append(f"Filled #memberOwnership5 with {request.member_ownership_five}")
+        if request.member_address_five is not None:
+            await page.fill('#memberAddress5', value=request.member_address_five)
+            results.append(f"Filled #memberAddress5 with {request.member_address_five}")
+        if request.member_cell_five is not None:
+            await page.fill('#memberCell5', value=request.member_cell_five)
+            results.append(f"Filled #memberCell5 with {request.member_cell_five}")
+        if request.member_ssn_five is not None:
+            await page.fill('#memberSSN5', value=request.member_ssn_five)
+            results.append(f"Filled #memberSSN5 with {request.member_ssn_five}")
+        if request.member_dob_five is not None:
+            await page.fill('#memberDOB5', value=request.member_dob_five)
+            results.append(f"Filled #memberDOB5 with {request.member_dob_five}")
+            await page.click('body', position={'x': 10, 'y': 10})
+            results.append("Clicked body after memberDOB5")
+        if request.member_email_five is not None:
+            await page.fill('#memberEmail5', value=request.member_email_five)
+            results.append(f"Filled #memberEmail5 with {request.member_email_five}")
+        if request.member_fico_score_five is not None:
+            await page.fill('#memberCreditScore5', value=request.member_fico_score_five)
+            results.append(f"Filled #memberCreditScore5 with {request.member_fico_score_five}")
+        if request.member_guarantor_five is not None:
+            await page.wait_for_selector(f'label[for="{request.member_guarantor_five}"]', timeout=10000)
+            await page.click(f'label[for="{request.member_guarantor_five}"]')
+            results.append(f"Clicked label for {request.member_guarantor_five}")
+        if request.member_citizenship_five is not None:
+            await page.wait_for_selector(f'label[for="{request.member_citizenship_five}"]', timeout=10000)
+            await page.click(f'label[for="{request.member_citizenship_five}"]')
+            results.append(f"Clicked label for {request.member_citizenship_five}")
+
+        # After member_citizenship_five
+        if request.additional_guarantors is not None:
+            await page.wait_for_selector(f'label[for="{request.additional_guarantors}"]', timeout=10000)
+            await page.click(f'label[for="{request.additional_guarantors}"]')
+            results.append(f"Clicked label for {request.additional_guarantors}")
+        if request.pg_three_fname is not None:
+            await page.fill('#guarantorFName', value=request.pg_three_fname)
+            results.append(f"Filled #guarantorFName with {request.pg_three_fname}")
+        if request.pg_three_mname is not None:
+            await page.fill('#guarantorMName', value=request.pg_three_mname)
+            results.append(f"Filled #guarantorMName with {request.pg_three_mname}")
+        if request.pg_three_lname is not None:
+            await page.fill('#guarantorLName', value=request.pg_three_lname)
+            results.append(f"Filled #guarantorLName with {request.pg_three_lname}")
+        if request.pg_three_cell is not None:
+            await page.fill('#guarantorCellNumber', value=request.pg_three_cell)
+            results.append(f"Filled #guarantorCellNumber with {request.pg_three_cell}")
+        if request.pg_three_ssn is not None:
+            await page.fill('#guarantorSSN', value=request.pg_three_ssn)
+            results.append(f"Filled #guarantorSSN with {request.pg_three_ssn}")
+        if request.pg_three_dob is not None:
+            await page.fill('#guarantorDOB', value=request.pg_three_dob)
+            results.append(f"Filled #guarantorDOB with {request.pg_three_dob}")
+            await page.click('body', position={'x': 10, 'y': 10})
+            results.append("Clicked body after pg_three_dob")
+        if request.pg_three_marital_status is not None:
+            await page.select_option('#guarantorStatus', value=request.pg_three_marital_status)
+            results.append(f"Selected #guarantorStatus with {request.pg_three_marital_status}")
+        if request.pg_three_street is not None:
+            await page.fill('#guarantorAddress', value=request.pg_three_street)
+            results.append(f"Filled #guarantorAddress with {request.pg_three_street}")
+        if request.pg_three_city is not None:
+            await page.fill('#guarantorCity', value=request.pg_three_city)
+            results.append(f"Filled #guarantorCity with {request.pg_three_city}")
+        if request.pg_three_state is not None:
+            await page.select_option('#guarantorState', value=request.pg_three_state)
+            results.append(f"Selected #guarantorState with {request.pg_three_state}")
+        if request.pg_three_zip is not None:
+            await page.fill('#guarantorZip', value=request.pg_three_zip)
+            results.append(f"Filled #guarantorZip with {request.pg_three_zip}")
+        if request.pg_three_email is not None:
+            await page.fill('#guarantorEmail', value=request.pg_three_email)
+            results.append(f"Filled #guarantorEmail with {request.pg_three_email}")
+        if request.pg_three_citizenship is not None:
+            await page.wait_for_selector(f'label[for="{request.pg_three_citizenship}"]', timeout=10000)
+            await page.click(f'label[for="{request.pg_three_citizenship}"]')
+            results.append(f"Clicked label for {request.pg_three_citizenship}")
+        await page.wait_for_timeout(1000)
+        results.append("Waited 1s for new member form (guarantor)")
+        await page.wait_for_selector('a[onclick*="addOrRemoveAdditionalGuarantors"]', timeout=10000)
+        await page.click('a[onclick*="addOrRemoveAdditionalGuarantors"]')
+        results.append("Clicked addOrRemoveAdditionalGuarantors link")
+        await page.wait_for_timeout(1000)
+        results.append("Waited 1s for new member form (guarantor 1)")
+        if request.pg_four_fname is not None:
+            await page.fill('#guarantorFName_1', value=request.pg_four_fname)
+            results.append(f"Filled #guarantorFName_1 with {request.pg_four_fname}")
+        if request.pg_four_mname is not None:
+            await page.fill('#guarantorMName_1', value=request.pg_four_mname)
+            results.append(f"Filled #guarantorMName_1 with {request.pg_four_mname}")
+        if request.pg_four_lname is not None:
+            await page.fill('#guarantorLName_1', value=request.pg_four_lname)
+            results.append(f"Filled #guarantorLName_1 with {request.pg_four_lname}")
+        if request.pg_four_cell is not None:
+            await page.fill('#guarantorCellNumber_1', value=request.pg_four_cell)
+            results.append(f"Filled #guarantorCellNumber_1 with {request.pg_four_cell}")
+        if request.pg_four_ssn is not None:
+            await page.fill('#guarantorSSN_1', value=request.pg_four_ssn)
+            results.append(f"Filled #guarantorSSN_1 with {request.pg_four_ssn}")
+        if request.pg_four_dob is not None:
+            await page.fill('#guarantorDOB_1', value=request.pg_four_dob)
+            results.append(f"Filled #guarantorDOB_1 with {request.pg_four_dob}")
+            await page.click('body', position={'x': 10, 'y': 10})
+            results.append("Clicked body after pg_four_dob")
+        if request.pg_four_marital_status is not None:
+            await page.select_option('#guarantorStatus_1', value=request.pg_four_marital_status)
+            results.append(f"Selected #guarantorStatus_1 with {request.pg_four_marital_status}")
+        if request.pg_four_street is not None:
+            await page.fill('#guarantorAddress_1', value=request.pg_four_street)
+            results.append(f"Filled #guarantorAddress_1 with {request.pg_four_street}")
+        if request.pg_four_city is not None:
+            await page.fill('#guarantorCity_1', value=request.pg_four_city)
+            results.append(f"Filled #guarantorCity_1 with {request.pg_four_city}")
+        if request.pg_four_state is not None:
+            await page.select_option('#guarantorState_1', value=request.pg_four_state)
+            results.append(f"Selected #guarantorState_1 with {request.pg_four_state}")
+        if request.pg_four_zip is not None:
+            await page.fill('#guarantorZip_1', value=request.pg_four_zip)
+            results.append(f"Filled #guarantorZip_1 with {request.pg_four_zip}")
+        if request.pg_four_email is not None:
+            await page.fill('#guarantorEmail_1', value=request.pg_four_email)
+            results.append(f"Filled #guarantorEmail_1 with {request.pg_four_email}")
+        if request.pg_four_citizenship is not None:
+            await page.wait_for_selector(f'label[for="{request.pg_four_citizenship}"]', timeout=10000)
+            await page.click(f'label[for="{request.pg_four_citizenship}"]')
+            results.append(f"Clicked label for {request.pg_four_citizenship}")
+        if request.is_bankrupt is not None:
+            await page.wait_for_selector(f'label[for="{request.is_bankrupt}"]', timeout=10000)
+            await page.click(f'label[for="{request.is_bankrupt}"]')
+            results.append(f"Clicked label for {request.is_bankrupt}")
+        if request.is_outstanding_judgement is not None:
+            await page.wait_for_selector(f'label[for="{request.is_outstanding_judgement}"]', timeout=10000)
+            await page.click(f'label[for="{request.is_outstanding_judgement}"]')
+            results.append(f"Clicked label for {request.is_outstanding_judgement}")
+        if request.is_active_lawsuit is not None:
+            await page.wait_for_selector(f'label[for="{request.is_active_lawsuit}"]', timeout=10000)
+            await page.click(f'label[for="{request.is_active_lawsuit}"]')
+            results.append(f"Clicked label for {request.is_active_lawsuit}")
+        if request.is_forclosure is not None:
+            await page.wait_for_selector(f'label[for="{request.is_forclosure}"]', timeout=10000)
+            await page.click(f'label[for="{request.is_forclosure}"]')
+            results.append(f"Clicked label for {request.is_forclosure}")
+        if request.is_delinquent is not None:
+            await page.wait_for_selector(f'label[for="{request.is_delinquent}"]', timeout=10000)
+            await page.click(f'label[for="{request.is_delinquent}"]')
+            results.append(f"Clicked label for {request.is_delinquent}")
+        if request.is_fraud is not None:
+            await page.wait_for_selector(f'label[for="{request.is_fraud}"]', timeout=10000)
+            await page.click(f'label[for="{request.is_fraud}"]')
+            results.append(f"Clicked label for {request.is_fraud}")
+        if request.borrower_designated_beneficiary is not None:
+            await page.wait_for_selector(f'label[for="{request.borrower_designated_beneficiary}"]', timeout=10000)
+            await page.click(f'label[for="{request.borrower_designated_beneficiary}"]')
+            results.append(f"Clicked label for {request.borrower_designated_beneficiary}")
+
+        # After borrower_designated_beneficiary
+        if request.flip_experience is not None:
+            await page.wait_for_selector(f'label[for="{request.flip_experience}"]', timeout=10000)
+            await page.click(f'label[for="{request.flip_experience}"]')
+            results.append(f"Clicked label for {request.flip_experience}")
+        if request.flips_completed is not None:
+            await page.fill('#borNoOfREPropertiesCompleted', value=request.flips_completed)
+            results.append(f"Filled #borNoOfREPropertiesCompleted with {request.flips_completed}")
+        if request.ground_up_experience is not None:
+            await page.wait_for_selector(f'label[for="{request.ground_up_experience}"]', timeout=10000)
+            await page.click(f'label[for="{request.ground_up_experience}"]')
+            results.append(f"Clicked label for {request.ground_up_experience}")
+        if request.ground_ups_completed is not None:
+            await page.fill('#borRehabPropCompleted', value=request.ground_ups_completed)
+            results.append(f"Filled #borRehabPropCompleted with {request.ground_ups_completed}")
+        if request.is_borrower_gc is not None:
+            await page.wait_for_selector(f'label[for="{request.is_borrower_gc}"]', timeout=10000)
+            await page.click(f'label[for="{request.is_borrower_gc}"]')
+            results.append(f"Clicked label for {request.is_borrower_gc}")
+        if request.rental_experience is not None:
+            await page.wait_for_selector(f'label[for="{request.rental_experience}"]', timeout=10000)
+            await page.click(f'label[for="{request.rental_experience}"]')
+            results.append(f"Clicked label for {request.rental_experience}")
+        if request.rentals_owned is not None:
+            await page.fill('#borNoOfOwnProp', value=request.rentals_owned)
+            results.append(f"Filled #borNoOfOwnProp with {request.rentals_owned}")
+        if request.have_professional_licences is not None:
+            await page.wait_for_selector(f'label[for="{request.have_professional_licences}"]', timeout=10000)
+            await page.click(f'label[for="{request.have_professional_licences}"]')
+            results.append(f"Clicked label for {request.have_professional_licences}")
+        if request.professional_licences is not None:
+            await page.select_option('#borProfLicence', value=request.professional_licences)
+            results.append(f"Selected #borProfLicence with {request.professional_licences}")
+        if request.liquid_assets is not None:
+            await page.fill('#liquidAssets', value=request.liquid_assets)
+            results.append(f"Filled #liquidAssets with {request.liquid_assets}")
+        if request.desired_closing_date is not None:
+            await page.fill('#desiredClosingDate', value=request.desired_closing_date)
+            results.append(f"Filled #desiredClosingDate with {request.desired_closing_date}")
+            await page.click('body', position={'x': 10, 'y': 10})
+            results.append("Clicked body after desired_closing_date")
+        if request.desired_loan_amount is not None:
+            await page.fill('#desiredLoanAmount', value=request.desired_loan_amount)
+            results.append(f"Filled #desiredLoanAmount with {request.desired_loan_amount}")
+        if request.type_of_loan_requesting is not None:
+            await page.select_option('#typeOfHMLOLoanRequesting', value=request.type_of_loan_requesting)
+            results.append(f"Selected #typeOfHMLOLoanRequesting with {request.type_of_loan_requesting}")
+        if request.trial_payment_date is not None:
+            await page.fill('#trialPaymentDate1', value=request.trial_payment_date)
+            results.append(f"Filled #trialPaymentDate1 with {request.trial_payment_date}")
+            await page.click('body', position={'x': 10, 'y': 10})
+            results.append("Clicked body after trial_payment_date")
+        if request.maturity_date is not None:
+            await page.fill('#maturityDate', value=request.maturity_date)
+            results.append(f"Filled #maturityDate with {request.maturity_date}")
+            await page.click('body', position={'x': 10, 'y': 10})
+            results.append("Clicked body after maturity_date")
+        if request.loan_term is not None:
+            await page.select_option('#loanTerm', value=request.loan_term)
+            results.append(f"Selected #loanTerm with {request.loan_term}")
+        if request.interest_rate is not None:
+            await page.wait_for_selector('input#lien1Rate', timeout=10000)
+            await page.click('input#lien1Rate')
+            await page.fill('input#lien1Rate', request.interest_rate)
+            results.append(f"Filled #lien1Rate with {request.interest_rate}")
+        if request.lien_terms is not None:
+            await page.select_option('#lien1Terms', value=request.lien_terms)
+            results.append(f"Selected #lien1Terms with {request.lien_terms}")
+        if request.amortization_type is not None:
+            await page.wait_for_selector(f'label[for="{request.amortization_type}"]', timeout=10000)
+            await page.click(f'label[for="{request.amortization_type}"]')
+            results.append(f"Clicked label for {request.amortization_type}")
+        if request.is_taxes_ins_escrowed is not None:
+            await page.wait_for_selector(f'label[for="{request.is_taxes_ins_escrowed}"]', timeout=10000)
+            await page.click(f'label[for="{request.is_taxes_ins_escrowed}"]')
+            results.append(f"Clicked label for {request.is_taxes_ins_escrowed}")
+        if request.taxes is not None:
+            await page.fill('#taxes1', value=request.taxes)
+            results.append(f"Filled #taxes1 with {request.taxes}")
+        if request.annual_premium is not None:
+            await page.fill('#annualPremium', value=request.annual_premium)
+            results.append(f"Filled #annualPremium with {request.annual_premium}")
+        if request.cost_basis is not None:
+            await page.fill('#costBasis', value=request.cost_basis)
+            results.append(f"Filled #costBasis with {request.cost_basis}")
+        if request.home_value is not None:
+            await page.fill('#homeValue', value=request.home_value)
+            results.append(f"Filled #homeValue with {request.home_value}")
+        if request.max_amount_to_put_down is not None:
+            await page.wait_for_selector('input#maxAmtToPutDown', timeout=10000)
+            await page.click('input#maxAmtToPutDown')
+            await page.fill('input#maxAmtToPutDown', request.max_amount_to_put_down)
+            results.append(f"Filled #maxAmtToPutDown with {request.max_amount_to_put_down}")
+        if request.subject_property_address is not None:
+            await page.fill('#propertyAddress_1', value=request.subject_property_address)
+            results.append(f"Filled #propertyAddress_1 with {request.subject_property_address}")
+        if request.subject_property_unit is not None:
+            await page.fill('#propertyUnit_1', value=request.subject_property_unit)
+            results.append(f"Filled #propertyUnit_1 with {request.subject_property_unit}")
+        if request.subject_property_city is not None:
+            await page.fill('#propertyCity_1', value=request.subject_property_city)
+            results.append(f"Filled #propertyCity_1 with {request.subject_property_city}")
+        if request.subject_property_state is not None:
+            await page.select_option('#propertyState_1', value=request.subject_property_state)
+            results.append(f"Selected #propertyState_1 with {request.subject_property_state}")
+        if request.subject_property_zip is not None:
+            await page.fill('#propertyZip_1', value=request.subject_property_zip)
+            results.append(f"Filled #propertyZip_1 with {request.subject_property_zip}")
+        if request.subject_property_county is not None:
+            await page.select_option('#propertyCounty_1', value=request.subject_property_county)
+            results.append(f"Selected #propertyCounty_1 with {request.subject_property_county}")
+        if request.subject_property_apn is not None:
+            await page.fill('#parcelNo_1', value=request.subject_property_apn)
+            results.append(f"Filled #parcelNo_1 with {request.subject_property_apn}")
+        if request.subject_property_block is not None:
+            await page.fill('#block_1', value=request.subject_property_block)
+            results.append(f"Filled #block_1 with {request.subject_property_block}")
+        if request.subject_property_lot is not None:
+            await page.fill('#lot_1', value=request.subject_property_lot)
+            results.append(f"Filled #lot_1 with {request.subject_property_lot}")
+        if request.subject_property_type is not None:
+            await page.click('div#propertyType_chosen')
+            await page.click(f'ul.chosen-results li:has-text("{request.subject_property_type}")')
+            results.append(f"Selected property type {request.subject_property_type}")
+        if request.subject_property_sqft is not None:
+            await page.fill('#propertySqFt', value=request.subject_property_sqft)
+            results.append(f"Filled #propertySqFt with {request.subject_property_sqft}")
+        if request.subject_property_acres is not None:
+            await page.fill('#acres', value=request.subject_property_acres)
+            results.append(f"Filled #acres with {request.subject_property_acres}")
+        if request.subject_property_year_built is not None:
+            await page.fill('#yearBuilt', value=request.subject_property_year_built)
+            results.append(f"Filled #yearBuilt with {request.subject_property_year_built}")
+        if request.bedrooms is not None:
+            await page.fill('#howManyBedRoom', value=request.bedrooms)
+            results.append(f"Filled #howManyBedRoom with {request.bedrooms}")
+        if request.bathrooms is not None:
+            await page.fill('#howManyBathRoom', value=request.bathrooms)
+            results.append(f"Filled #howManyBathRoom with {request.bathrooms}")
+        if request.half_bathrooms is not None:
+            await page.fill('#howManyHalfBathRoom', value=request.half_bathrooms)
+            results.append(f"Filled #howManyHalfBathRoom with {request.half_bathrooms}")
+        if request.number_of_buildings is not None:
+            await page.fill('#noOfBuildings', value=request.number_of_buildings)
+            results.append(f"Filled #noOfBuildings with {request.number_of_buildings}")
+        if request.number_of_units_occupied is not None:
+            await page.fill('#noUnitsOccupied', value=request.number_of_units_occupied)
+            results.append(f"Filled #noUnitsOccupied with {request.number_of_units_occupied}")
+        if request.number_of_parcels is not None:
+            await page.fill('#noOfParcels', value=request.number_of_parcels)
+            results.append(f"Filled #noOfParcels with {request.number_of_parcels}")
+        if request.estimated_property_value is not None:
+            await page.fill('#estimatedPropertyValue', value=request.estimated_property_value)
+            results.append(f"Filled #estimatedPropertyValue with {request.estimated_property_value}")
+        if request.present_occupancy is not None:
+            await page.select_option('#presentOccupancy', value=request.present_occupancy)
+            results.append(f"Selected #presentOccupancy with {request.present_occupancy}")
 
         await browser.close()
     return results
