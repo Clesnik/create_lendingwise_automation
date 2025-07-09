@@ -215,145 +215,201 @@ async def run_playwright_actions(request: ActionRequest):
         email_field = page.locator('input#userName')
         await email_field.click()
         results.append("Clicked username field")
-        await email_field.fill(request.username)
-        results.append(f"Filled username with {request.username}")
+        if request.username is not None:
+            await email_field.fill(request.username)
+            results.append(f"Filled username with {request.username}")
         pwd_input = page.locator('input#pwd')
         await pwd_input.wait_for(timeout=10000)
         results.append("Waited for password input")
         await pwd_input.click()
         results.append("Clicked password field")
-        await pwd_input.fill(request.password)
-        results.append(f"Filled password with {request.password}")
+        if request.password is not None:
+            await pwd_input.fill(request.password)
+            results.append(f"Filled password with {request.password}")
         await page.click("button#submitbutton")
         results.append("Clicked login button")
         await page.wait_for_url("https://app.brrrr.com/backoffice/LMRequest*", timeout=20000)
         results.append("Waited for post-login URL")
-        await page.select_option('select#branchId', value=request.branch_id)
-        results.append(f"Selected branchId with {request.branch_id}")
-        await page.select_option('select#secondaryAgentId', label=request.secondary_agent)
-        results.append(f"Selected secondaryAgentId with {request.secondary_agent}")
+        if request.branch_id is not None:
+            await page.select_option('select#branchId', value=request.branch_id)
+            results.append(f"Selected branchId with {request.branch_id}")
+        if request.secondary_agent is not None:
+            await page.select_option('select#secondaryAgentId', label=request.secondary_agent)
+            results.append(f"Selected secondaryAgentId with {request.secondary_agent}")
         await page.click('div#LMRClientType_chosen')
         results.append("Clicked LMRClientType_chosen")
-        await page.click(f'ul.chosen-results li.active-result:has-text(\"{request.loan_program}\")')
-        results.append(f"Selected loan program {request.loan_program}")
+        if request.loan_program is not None:
+            await page.click(f'ul.chosen-results li.active-result:has-text("{request.loan_program}")')
+            results.append(f"Selected loan program {request.loan_program}")
         await page.click('div#LMRInternalLoanProgram_chosen')
         results.append("Clicked LMRInternalLoanProgram_chosen")
-        await page.click(f'ul.chosen-results li.active-result:has-text(\"{request.internal_program}\")')
-        results.append(f"Selected internal program {request.internal_program}")
-        await page.select_option('#propDetailsProcess', value=request.prop_process)
-        results.append(f"Selected propDetailsProcess with {request.prop_process}")
-        await page.select_option('#primaryStatus', value=request.primary_status)
-        results.append(f"Selected primaryStatus with {request.primary_status}")
-        await page.fill('#leadSource', value=request.lead_source)
-        results.append(f"Filled leadSource with {request.lead_source}")
-        await page.fill('#referringParty', value=request.referring_party)
-        results.append(f"Filled referringParty with {request.referring_party}")
-        await page.fill('#borrowerFName', value=request.pg_one_fname)
-        results.append(f"Filled borrowerFName with {request.pg_one_fname}")
-        await page.fill('#borrowerMName', value=request.pg_one_mname)
-        results.append(f"Filled borrowerMName with {request.pg_one_mname}")
-        await page.fill('#borrowerLName', value=request.pg_one_lname)
-        results.append(f"Filled borrowerLName with {request.pg_one_lname}")
-        await page.fill('#borrowerEmail', value=request.pg_one_email)
-        results.append(f"Filled borrowerEmail with {request.pg_one_email}")
-        await page.fill('#cellNo', value=request.pg_one_cell)
-        results.append(f"Filled cellNo with {request.pg_one_cell}")
-        await page.fill('#workNumber', value=request.pg_one_work)
-        results.append(f"Filled workNumber with {request.pg_one_work}")
-        await page.fill('#presentAddress', value=request.pg_one_street)
-        results.append(f"Filled presentAddress with {request.pg_one_street}")
-        await page.fill('#presentUnit', value=request.pg_one_unit)
-        results.append(f"Filled presentUnit with {request.pg_one_unit}")
-        await page.fill('#presentCity', value=request.pg_one_city)
-        results.append(f"Filled presentCity with {request.pg_one_city}")
-        await page.select_option('#presentState', value=request.pg_one_state)
-        results.append(f"Selected presentState with {request.pg_one_state}")
-        await page.fill('#presentZip', value=request.pg_one_zip)
-        results.append(f"Filled presentZip with {request.pg_one_zip}")
-        await page.select_option('#presentCounty', value=request.pg_one_county)
-        results.append(f"Selected presentCounty with {request.pg_one_county}")
-        await page.select_option('#presentCountry', value=request.pg_one_country)
-        results.append(f"Selected presentCountry with {request.pg_one_country}")
-        await page.fill('#mailingAddress', value=request.mailing_street)
-        results.append(f"Filled mailingAddress with {request.mailing_street}")
-        await page.fill('#mailingUnit', value=request.mailing_unit)
-        results.append(f"Filled mailingUnit with {request.mailing_unit}")
-        await page.fill('#mailingCity', value=request.mailing_city)
-        results.append(f"Filled mailingCity with {request.mailing_city}")
-        await page.select_option('#mailingState', value=request.mailing_state)
-        results.append(f"Selected mailingState with {request.mailing_state}")
-        await page.fill('#mailingZip', value=request.mailing_zip)
-        results.append(f"Filled mailingZip with {request.mailing_zip}")
-        await page.select_option('#mailingCountry', value=request.mailing_country)
-        results.append(f"Selected mailingCountry with {request.mailing_country}")
-        await page.fill('#borrowerDOB', value=request.pg_one_dob)
-        results.append(f"Filled borrowerDOB with {request.pg_one_dob}")
-        await page.click('body', position={'x': 10, 'y': 10})
-        results.append("Clicked body after DOB")
-        await page.fill('#ssn', value=request.pg_one_ssn)
-        results.append(f"Filled ssn with {request.pg_one_ssn}")
-        await page.wait_for_selector(f'label[for="{request.pg_one_marital_status}"]', timeout=10000)
-        await page.click(f'label[for="{request.pg_one_marital_status}"]')
-        results.append(f"Clicked marital status {request.pg_one_marital_status}")
-        await page.wait_for_selector(f'label[for="{request.pg_one_citizenship}"]', timeout=10000)
-        await page.click(f'label[for="{request.pg_one_citizenship}"]')
-        results.append(f"Clicked citizenship {request.pg_one_citizenship}")
-        await page.fill('#midFicoScore', value=request.pg_one_mid_fico)
-        results.append(f"Filled midFicoScore with {request.pg_one_mid_fico}")
-        await page.select_option('#borCreditScoreRange', value=request.pg_one_fico_range)
-        results.append(f"Selected borCreditScoreRange with {request.pg_one_fico_range}")
-        await page.select_option('#borrowerType', value=request.borrower_type)
-        results.append(f"Selected borrowerType with {request.borrower_type}")
-        await page.fill('#entityName', value=request.entity_name)
-        results.append(f"Filled entityName with {request.entity_name}")
-        await page.fill('#tradeName', value=request.trade_name)
-        results.append(f"Filled tradeName with {request.trade_name}")
-        await page.select_option('#entityType', value=request.entity_type)
-        results.append(f"Selected entityType with {request.entity_type}")
-        await page.fill('#dateOfFormation', value=request.date_of_formation)
-        results.append(f"Filled dateOfFormation with {request.date_of_formation}")
-        await page.click('body', position={'x': 10, 'y': 10})
-        results.append("Clicked body after dateOfFormation")
-        await page.select_option('#entityStateOfFormation', value=request.state_of_formation)
-        results.append(f"Selected entityStateOfFormation with {request.state_of_formation}")
-        await page.fill('#ENINo', value=request.ein_number)
-        results.append(f"Filled ENINo with {request.ein_number}")
-        await page.fill('#businessPhone', value=request.business_phone)
-        results.append(f"Filled businessPhone with {request.business_phone}")
-        await page.fill('#entityAddress', value=request.entity_address)
-        results.append(f"Filled entityAddress with {request.entity_address}")
-        await page.fill('#entityCity', value=request.entity_city)
-        results.append(f"Filled entityCity with {request.entity_city}")
-        await page.select_option('#entityState', value=request.entity_state)
-        results.append(f"Selected entityState with {request.entity_state}")
-        await page.fill('#entityZip', value=request.entity_zip)
-        results.append(f"Filled entityZip with {request.entity_zip}")
+        if request.internal_program is not None:
+            await page.click(f'ul.chosen-results li.active-result:has-text("{request.internal_program}")')
+            results.append(f"Selected internal program {request.internal_program}")
+        if request.prop_process is not None:
+            await page.select_option('#propDetailsProcess', value=request.prop_process)
+            results.append(f"Selected propDetailsProcess with {request.prop_process}")
+        if request.primary_status is not None:
+            await page.select_option('#primaryStatus', value=request.primary_status)
+            results.append(f"Selected primaryStatus with {request.primary_status}")
+        if request.lead_source is not None:
+            await page.fill('#leadSource', value=request.lead_source)
+            results.append(f"Filled leadSource with {request.lead_source}")
+        if request.referring_party is not None:
+            await page.fill('#referringParty', value=request.referring_party)
+            results.append(f"Filled referringParty with {request.referring_party}")
+        if request.pg_one_fname is not None:
+            await page.fill('#borrowerFName', value=request.pg_one_fname)
+            results.append(f"Filled borrowerFName with {request.pg_one_fname}")
+        if request.pg_one_mname is not None:
+            await page.fill('#borrowerMName', value=request.pg_one_mname)
+            results.append(f"Filled borrowerMName with {request.pg_one_mname}")
+        if request.pg_one_lname is not None:
+            await page.fill('#borrowerLName', value=request.pg_one_lname)
+            results.append(f"Filled borrowerLName with {request.pg_one_lname}")
+        if request.pg_one_email is not None:
+            await page.fill('#borrowerEmail', value=request.pg_one_email)
+            results.append(f"Filled borrowerEmail with {request.pg_one_email}")
+        if request.pg_one_cell is not None:
+            await page.fill('#cellNo', value=request.pg_one_cell)
+            results.append(f"Filled cellNo with {request.pg_one_cell}")
+        if request.pg_one_work is not None:
+            await page.fill('#workNumber', value=request.pg_one_work)
+            results.append(f"Filled workNumber with {request.pg_one_work}")
+        if request.pg_one_street is not None:
+            await page.fill('#presentAddress', value=request.pg_one_street)
+            results.append(f"Filled presentAddress with {request.pg_one_street}")
+        if request.pg_one_unit is not None:
+            await page.fill('#presentUnit', value=request.pg_one_unit)
+            results.append(f"Filled presentUnit with {request.pg_one_unit}")
+        if request.pg_one_city is not None:
+            await page.fill('#presentCity', value=request.pg_one_city)
+            results.append(f"Filled presentCity with {request.pg_one_city}")
+        if request.pg_one_state is not None:
+            await page.select_option('#presentState', value=request.pg_one_state)
+            results.append(f"Selected presentState with {request.pg_one_state}")
+        if request.pg_one_zip is not None:
+            await page.fill('#presentZip', value=request.pg_one_zip)
+            results.append(f"Filled presentZip with {request.pg_one_zip}")
+        if request.pg_one_county is not None:
+            await page.select_option('#presentCounty', value=request.pg_one_county)
+            results.append(f"Selected presentCounty with {request.pg_one_county}")
+        if request.pg_one_country is not None:
+            await page.select_option('#presentCountry', value=request.pg_one_country)
+            results.append(f"Selected presentCountry with {request.pg_one_country}")
+        if request.mailing_street is not None:
+            await page.fill('#mailingAddress', value=request.mailing_street)
+            results.append(f"Filled mailingAddress with {request.mailing_street}")
+        if request.mailing_unit is not None:
+            await page.fill('#mailingUnit', value=request.mailing_unit)
+            results.append(f"Filled mailingUnit with {request.mailing_unit}")
+        if request.mailing_city is not None:
+            await page.fill('#mailingCity', value=request.mailing_city)
+            results.append(f"Filled mailingCity with {request.mailing_city}")
+        if request.mailing_state is not None:
+            await page.select_option('#mailingState', value=request.mailing_state)
+            results.append(f"Selected mailingState with {request.mailing_state}")
+        if request.mailing_zip is not None:
+            await page.fill('#mailingZip', value=request.mailing_zip)
+            results.append(f"Filled mailingZip with {request.mailing_zip}")
+        if request.mailing_country is not None:
+            await page.select_option('#mailingCountry', value=request.mailing_country)
+            results.append(f"Selected mailingCountry with {request.mailing_country}")
+        if request.pg_one_dob is not None:
+            await page.fill('#borrowerDOB', value=request.pg_one_dob)
+            results.append(f"Filled borrowerDOB with {request.pg_one_dob}")
+            await page.click('body', position={'x': 10, 'y': 10})
+            results.append("Clicked body after DOB")
+        if request.pg_one_ssn is not None:
+            await page.fill('#ssn', value=request.pg_one_ssn)
+            results.append(f"Filled ssn with {request.pg_one_ssn}")
+        if request.pg_one_marital_status is not None:
+            await page.wait_for_selector(f'label[for="{request.pg_one_marital_status}"]', timeout=10000)
+            await page.click(f'label[for="{request.pg_one_marital_status}"]')
+            results.append(f"Clicked marital status {request.pg_one_marital_status}")
+        if request.pg_one_citizenship is not None:
+            await page.wait_for_selector(f'label[for="{request.pg_one_citizenship}"]', timeout=10000)
+            await page.click(f'label[for="{request.pg_one_citizenship}"]')
+            results.append(f"Clicked citizenship {request.pg_one_citizenship}")
+        if request.pg_one_mid_fico is not None:
+            await page.fill('#midFicoScore', value=request.pg_one_mid_fico)
+            results.append(f"Filled midFicoScore with {request.pg_one_mid_fico}")
+        if request.pg_one_fico_range is not None:
+            await page.select_option('#borCreditScoreRange', value=request.pg_one_fico_range)
+            results.append(f"Selected borCreditScoreRange with {request.pg_one_fico_range}")
+        if request.borrower_type is not None:
+            await page.select_option('#borrowerType', value=request.borrower_type)
+            results.append(f"Selected borrowerType with {request.borrower_type}")
+        if request.entity_name is not None:
+            await page.fill('#entityName', value=request.entity_name)
+            results.append(f"Filled entityName with {request.entity_name}")
+        if request.trade_name is not None:
+            await page.fill('#tradeName', value=request.trade_name)
+            results.append(f"Filled tradeName with {request.trade_name}")
+        if request.entity_type is not None:
+            await page.select_option('#entityType', value=request.entity_type)
+            results.append(f"Selected entityType with {request.entity_type}")
+        if request.date_of_formation is not None:
+            await page.fill('#dateOfFormation', value=request.date_of_formation)
+            results.append(f"Filled dateOfFormation with {request.date_of_formation}")
+            await page.click('body', position={'x': 10, 'y': 10})
+            results.append("Clicked body after dateOfFormation")
+        if request.state_of_formation is not None:
+            await page.select_option('#entityStateOfFormation', value=request.state_of_formation)
+            results.append(f"Selected entityStateOfFormation with {request.state_of_formation}")
+        if request.ein_number is not None:
+            await page.fill('#ENINo', value=request.ein_number)
+            results.append(f"Filled ENINo with {request.ein_number}")
+        if request.business_phone is not None:
+            await page.fill('#businessPhone', value=request.business_phone)
+            results.append(f"Filled businessPhone with {request.business_phone}")
+        if request.entity_address is not None:
+            await page.fill('#entityAddress', value=request.entity_address)
+            results.append(f"Filled entityAddress with {request.entity_address}")
+        if request.entity_city is not None:
+            await page.fill('#entityCity', value=request.entity_city)
+            results.append(f"Filled entityCity with {request.entity_city}")
+        if request.entity_state is not None:
+            await page.select_option('#entityState', value=request.entity_state)
+            results.append(f"Selected entityState with {request.entity_state}")
+        if request.entity_zip is not None:
+            await page.fill('#entityZip', value=request.entity_zip)
+            results.append(f"Filled entityZip with {request.entity_zip}")
         # Member 0
-        await page.fill('#memberName0', value=request.member_name_zero)
-        results.append(f"Filled #memberName0 with {request.member_name_zero}")
-        await page.fill('#memberTitle0', value=request.member_title_zero)
-        results.append(f"Filled #memberTitle0 with {request.member_title_zero}")
-        await page.fill('#memberOwnership0', value=request.member_ownership_zero)
-        results.append(f"Filled #memberOwnership0 with {request.member_ownership_zero}")
-        await page.fill('#memberAddress0', value=request.member_address_zero)
-        results.append(f"Filled #memberAddress0 with {request.member_address_zero}")
-        await page.fill('#memberCell0', value=request.member_cell_zero)
-        results.append(f"Filled #memberCell0 with {request.member_cell_zero}")
-        await page.fill('#memberSSN0', value=request.member_ssn_zero)
-        results.append(f"Filled #memberSSN0 with {request.member_ssn_zero}")
-        await page.fill('#memberDOB0', value=request.member_dob_zero)
-        results.append(f"Filled #memberDOB0 with {request.member_dob_zero}")
+        if request.member_name_zero is not None:
+            await page.fill('#memberName0', value=request.member_name_zero)
+            results.append(f"Filled #memberName0 with {request.member_name_zero}")
+        if request.member_title_zero is not None:
+            await page.fill('#memberTitle0', value=request.member_title_zero)
+            results.append(f"Filled #memberTitle0 with {request.member_title_zero}")
+        if request.member_ownership_zero is not None:
+            await page.fill('#memberOwnership0', value=request.member_ownership_zero)
+            results.append(f"Filled #memberOwnership0 with {request.member_ownership_zero}")
+        if request.member_address_zero is not None:
+            await page.fill('#memberAddress0', value=request.member_address_zero)
+            results.append(f"Filled #memberAddress0 with {request.member_address_zero}")
+        if request.member_cell_zero is not None:
+            await page.fill('#memberCell0', value=request.member_cell_zero)
+            results.append(f"Filled #memberCell0 with {request.member_cell_zero}")
+        if request.member_ssn_zero is not None:
+            await page.fill('#memberSSN0', value=request.member_ssn_zero)
+            results.append(f"Filled #memberSSN0 with {request.member_ssn_zero}")
+        if request.member_dob_zero is not None:
+            await page.fill('#memberDOB0', value=request.member_dob_zero)
+            results.append(f"Filled #memberDOB0 with {request.member_dob_zero}")
         await page.click('body', position={'x': 10, 'y': 10})
         results.append("Clicked body after memberDOB0")
-        await page.fill('#memberEmail0', value=request.member_email_zero)
-        results.append(f"Filled #memberEmail0 with {request.member_email_zero}")
-        await page.fill('#memberCreditScore0', value=request.member_fico_score_zero)
-        results.append(f"Filled #memberCreditScore0 with {request.member_fico_score_zero}")
-        if request.member_guarantor_zero:
+        if request.member_email_zero is not None:
+            await page.fill('#memberEmail0', value=request.member_email_zero)
+            results.append(f"Filled #memberEmail0 with {request.member_email_zero}")
+        if request.member_fico_score_zero is not None:
+            await page.fill('#memberCreditScore0', value=request.member_fico_score_zero)
+            results.append(f"Filled #memberCreditScore0 with {request.member_fico_score_zero}")
+        if request.member_guarantor_zero is not None:
             await page.wait_for_selector(f'label[for="{request.member_guarantor_zero}"]', timeout=10000)
             await page.click(f'label[for="{request.member_guarantor_zero}"]')
             results.append(f"Clicked label for {request.member_guarantor_zero}")
-        if request.member_citizenship_zero:
+        if request.member_citizenship_zero is not None:
             await page.wait_for_selector(f'label[for="{request.member_citizenship_zero}"]', timeout=10000)
             await page.click(f'label[for="{request.member_citizenship_zero}"]')
             results.append(f"Clicked label for {request.member_citizenship_zero}")
@@ -363,31 +419,40 @@ async def run_playwright_actions(request: ActionRequest):
         results.append("Waited 1s for new member form (0)")
 
         # Member 1
-        await page.fill('#memberName1', value=request.member_name_one)
-        results.append(f"Filled #memberName1 with {request.member_name_one}")
-        await page.fill('#memberTitle1', value=request.member_title_one)
-        results.append(f"Filled #memberTitle1 with {request.member_title_one}")
-        await page.fill('#memberOwnership1', value=request.member_ownership_one)
-        results.append(f"Filled #memberOwnership1 with {request.member_ownership_one}")
-        await page.fill('#memberAddress1', value=request.member_address_one)
-        results.append(f"Filled #memberAddress1 with {request.member_address_one}")
-        await page.fill('#memberCell1', value=request.member_cell_one)
-        results.append(f"Filled #memberCell1 with {request.member_cell_one}")
-        await page.fill('#memberSSN1', value=request.member_ssn_one)
-        results.append(f"Filled #memberSSN1 with {request.member_ssn_one}")
-        await page.fill('#memberDOB1', value=request.member_dob_one)
-        results.append(f"Filled #memberDOB1 with {request.member_dob_one}")
+        if request.member_name_one is not None:
+            await page.fill('#memberName1', value=request.member_name_one)
+            results.append(f"Filled #memberName1 with {request.member_name_one}")
+        if request.member_title_one is not None:
+            await page.fill('#memberTitle1', value=request.member_title_one)
+            results.append(f"Filled #memberTitle1 with {request.member_title_one}")
+        if request.member_ownership_one is not None:
+            await page.fill('#memberOwnership1', value=request.member_ownership_one)
+            results.append(f"Filled #memberOwnership1 with {request.member_ownership_one}")
+        if request.member_address_one is not None:
+            await page.fill('#memberAddress1', value=request.member_address_one)
+            results.append(f"Filled #memberAddress1 with {request.member_address_one}")
+        if request.member_cell_one is not None:
+            await page.fill('#memberCell1', value=request.member_cell_one)
+            results.append(f"Filled #memberCell1 with {request.member_cell_one}")
+        if request.member_ssn_one is not None:
+            await page.fill('#memberSSN1', value=request.member_ssn_one)
+            results.append(f"Filled #memberSSN1 with {request.member_ssn_one}")
+        if request.member_dob_one is not None:
+            await page.fill('#memberDOB1', value=request.member_dob_one)
+            results.append(f"Filled #memberDOB1 with {request.member_dob_one}")
         await page.click('body', position={'x': 10, 'y': 10})
         results.append("Clicked body after memberDOB1")
-        await page.fill('#memberEmail1', value=request.member_email_one)
-        results.append(f"Filled #memberEmail1 with {request.member_email_one}")
-        await page.fill('#memberCreditScore1', value=request.member_fico_score_one)
-        results.append(f"Filled #memberCreditScore1 with {request.member_fico_score_one}")
-        if request.member_guarantor_one:
+        if request.member_email_one is not None:
+            await page.fill('#memberEmail1', value=request.member_email_one)
+            results.append(f"Filled #memberEmail1 with {request.member_email_one}")
+        if request.member_fico_score_one is not None:
+            await page.fill('#memberCreditScore1', value=request.member_fico_score_one)
+            results.append(f"Filled #memberCreditScore1 with {request.member_fico_score_one}")
+        if request.member_guarantor_one is not None:
             await page.wait_for_selector(f'label[for="{request.member_guarantor_one}"]', timeout=10000)
             await page.click(f'label[for="{request.member_guarantor_one}"]')
             results.append(f"Clicked label for {request.member_guarantor_one}")
-        if request.member_citizenship_one:
+        if request.member_citizenship_one is not None:
             await page.wait_for_selector(f'label[for="{request.member_citizenship_one}"]', timeout=10000)
             await page.click(f'label[for="{request.member_citizenship_one}"]')
             results.append(f"Clicked label for {request.member_citizenship_one}")
