@@ -1380,8 +1380,12 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.fill('#proIncEmail_1', value=request.pro_inc_email_1)
                 results.append(f"Filled #proIncEmail_1 with {request.pro_inc_email_1}")
             if request.pro_inc_ph_1 is not None and request.pro_inc_ph_1.strip() != "":
-                await page.fill('#proIncPh_1', value=request.pro_inc_ph_1)
-                results.append(f"Filled #proIncPh_1 with {request.pro_inc_ph_1}")
+                await page.fill('#pro_inc_ph_1', value=request.pro_inc_ph_1)
+                results.append(f"Filled #pro_inc_ph_1 with {request.pro_inc_ph_1}")
+            # Click the Save button after filling pro_inc_ph_1 (not nested)
+            if request.pro_inc_ph_1 is not None and request.pro_inc_ph_1.strip() != "":
+                await page.click('#saveBtn')
+                results.append("Clicked Save button after filling pro_inc_ph_1")
 
             await browser.close()
     except Exception as e:
