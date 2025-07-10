@@ -1032,8 +1032,8 @@ async def run_playwright_actions(request: ActionRequest):
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_1}")
             await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
             results.append("Clicked plus icon to add more rent roll entries")
-            await page.wait_for_timeout(1000)
-            results.append("Waited 1s for new rent roll form to render")
+            await page.wait_for_timeout(5000)
+            results.append("Waited 5s for new rent roll form to render")
 
                     # Rent Roll Entry 1_2
             if request.unit_type_1_2 is not None and request.unit_type_1_2.strip() != "":
