@@ -1007,6 +1007,8 @@ async def run_playwright_actions(request: ActionRequest):
             if request.lb_contact_phone is not None:
                 await page.fill('#LBContactPhone', value=request.lb_contact_phone)
                 results.append(f"Filled #LBContactPhone with {request.lb_contact_phone}")
+
+            # Rent Roll Entry 1_1   
             if request.unit_type_1_1 is not None and request.unit_type_1_1.strip() != "":
                 await page.click('div#unitType_1_1_chosen')
                 await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_1}")')
@@ -1069,27 +1071,26 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_3
             if request.unit_type_1_3 is not None and request.unit_type_1_3.strip() != "":
                 await page.click('div#unitType_1_3_chosen')
-                await page.wait_for_selector(f'div#unitType_1_3_chosen + div ul.chosen-results li:has-text("{request.unit_type_1_3}")', state="visible")
-                option = page.locator(f'div#unitType_1_3_chosen + div ul.chosen-results li').filter(has_text=request.unit_type_1_3)
-                await option.scroll_into_view_if_needed()
-                await option.click()
+                dropdown_option = page.locator('div#unitType_1_3_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_3)
+                await dropdown_option.wait_for(timeout=5000)
+                await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_3} for entry 1_3")
-            if request.unit_num_1_3 is not None and request.unit_num_1_3.strip() != "":
+            if request.unit_num_1_3 is not None:
                 await page.fill('#unitNum_1_3', value=request.unit_num_1_3)
                 results.append(f"Filled #unitNum_1_3 with {request.unit_num_1_3}")
-            if request.sq_ft_1_3 is not None and request.sq_ft_1_3.strip() != "":
+            if request.sq_ft_1_3 is not None:
                 await page.fill('#sqFt_1_3', value=request.sq_ft_1_3)
                 results.append(f"Filled #sqFt_1_3 with {request.sq_ft_1_3}")
-            if request.rent_roll_market_rents_1_3 is not None and request.rent_roll_market_rents_1_3.strip() != "":
+            if request.rent_roll_market_rents_1_3 is not None:
                 await page.fill('#rentRollMarketRents_1_3', value=request.rent_roll_market_rents_1_3)
                 results.append(f"Filled #rentRollMarketRents_1_3 with {request.rent_roll_market_rents_1_3}")
-            if request.rent_roll_actual_rents_1_3 is not None and request.rent_roll_actual_rents_1_3.strip() != "":
+            if request.rent_roll_actual_rents_1_3 is not None:
                 await page.fill('#rentRollActualRents_1_3', value=request.rent_roll_actual_rents_1_3)
                 results.append(f"Filled #rentRollActualRents_1_3 with {request.rent_roll_actual_rents_1_3}")
-            if request.rent_roll_monthly_rent_1_3 is not None and request.rent_roll_monthly_rent_1_3.strip() != "":
+            if request.rent_roll_monthly_rent_1_3 is not None:
                 await page.fill('#rentRollMonthlyRent_1_3', value=request.rent_roll_monthly_rent_1_3)
                 results.append(f"Filled #rentRollMonthlyRent_1_3 with {request.rent_roll_monthly_rent_1_3}")
-            if request.rent_roll_vacant_no_1_3 is not None and request.rent_roll_vacant_no_1_3.strip() != "":
+            if request.rent_roll_vacant_no_1_3 is not None:
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_3}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_3}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_3}")
@@ -1102,27 +1103,26 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_4
             if request.unit_type_1_4 is not None and request.unit_type_1_4.strip() != "":
                 await page.click('div#unitType_1_4_chosen')
-                await page.wait_for_selector(f'div#unitType_1_4_chosen + div ul.chosen-results li:has-text("{request.unit_type_1_4}")', state="visible")
-                option = page.locator(f'div#unitType_1_4_chosen + div ul.chosen-results li').filter(has_text=request.unit_type_1_4)
-                await option.scroll_into_view_if_needed()
-                await option.click()
+                dropdown_option = page.locator('div#unitType_1_4_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_4)
+                await dropdown_option.wait_for(timeout=5000)
+                await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_4} for entry 1_4")
-            if request.unit_num_1_4 is not None and request.unit_num_1_4.strip() != "":
+            if request.unit_num_1_4 is not None:
                 await page.fill('#unitNum_1_4', value=request.unit_num_1_4)
                 results.append(f"Filled #unitNum_1_4 with {request.unit_num_1_4}")
-            if request.sq_ft_1_4 is not None and request.sq_ft_1_4.strip() != "":
+            if request.sq_ft_1_4 is not None:
                 await page.fill('#sqFt_1_4', value=request.sq_ft_1_4)
                 results.append(f"Filled #sqFt_1_4 with {request.sq_ft_1_4}")
-            if request.rent_roll_market_rents_1_4 is not None and request.rent_roll_market_rents_1_4.strip() != "":
+            if request.rent_roll_market_rents_1_4 is not None:
                 await page.fill('#rentRollMarketRents_1_4', value=request.rent_roll_market_rents_1_4)
                 results.append(f"Filled #rentRollMarketRents_1_4 with {request.rent_roll_market_rents_1_4}")
-            if request.rent_roll_actual_rents_1_4 is not None and request.rent_roll_actual_rents_1_4.strip() != "":
+            if request.rent_roll_actual_rents_1_4 is not None:
                 await page.fill('#rentRollActualRents_1_4', value=request.rent_roll_actual_rents_1_4)
                 results.append(f"Filled #rentRollActualRents_1_4 with {request.rent_roll_actual_rents_1_4}")
-            if request.rent_roll_monthly_rent_1_4 is not None and request.rent_roll_monthly_rent_1_4.strip() != "":
+            if request.rent_roll_monthly_rent_1_4 is not None:
                 await page.fill('#rentRollMonthlyRent_1_4', value=request.rent_roll_monthly_rent_1_4)
                 results.append(f"Filled #rentRollMonthlyRent_1_4 with {request.rent_roll_monthly_rent_1_4}")
-            if request.rent_roll_vacant_no_1_4 is not None and request.rent_roll_vacant_no_1_4.strip() != "":
+            if request.rent_roll_vacant_no_1_4 is not None:
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_4}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_4}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_4}")
@@ -1135,27 +1135,26 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_5
             if request.unit_type_1_5 is not None and request.unit_type_1_5.strip() != "":
                 await page.click('div#unitType_1_5_chosen')
-                await page.wait_for_selector(f'div#unitType_1_5_chosen + div ul.chosen-results li:has-text("{request.unit_type_1_5}")', state="visible")
-                option = page.locator(f'div#unitType_1_5_chosen + div ul.chosen-results li').filter(has_text=request.unit_type_1_5)
-                await option.scroll_into_view_if_needed()
-                await option.click()
+                dropdown_option = page.locator('div#unitType_1_5_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_5)
+                await dropdown_option.wait_for(timeout=5000)
+                await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_5} for entry 1_5")
-            if request.unit_num_1_5 is not None and request.unit_num_1_5.strip() != "":
+            if request.unit_num_1_5 is not None:
                 await page.fill('#unitNum_1_5', value=request.unit_num_1_5)
                 results.append(f"Filled #unitNum_1_5 with {request.unit_num_1_5}")
-            if request.sq_ft_1_5 is not None and request.sq_ft_1_5.strip() != "":
+            if request.sq_ft_1_5 is not None:
                 await page.fill('#sqFt_1_5', value=request.sq_ft_1_5)
                 results.append(f"Filled #sqFt_1_5 with {request.sq_ft_1_5}")
-            if request.rent_roll_market_rents_1_5 is not None and request.rent_roll_market_rents_1_5.strip() != "":
+            if request.rent_roll_market_rents_1_5 is not None:
                 await page.fill('#rentRollMarketRents_1_5', value=request.rent_roll_market_rents_1_5)
                 results.append(f"Filled #rentRollMarketRents_1_5 with {request.rent_roll_market_rents_1_5}")
-            if request.rent_roll_actual_rents_1_5 is not None and request.rent_roll_actual_rents_1_5.strip() != "":
+            if request.rent_roll_actual_rents_1_5 is not None:
                 await page.fill('#rentRollActualRents_1_5', value=request.rent_roll_actual_rents_1_5)
                 results.append(f"Filled #rentRollActualRents_1_5 with {request.rent_roll_actual_rents_1_5}")
-            if request.rent_roll_monthly_rent_1_5 is not None and request.rent_roll_monthly_rent_1_5.strip() != "":
+            if request.rent_roll_monthly_rent_1_5 is not None:
                 await page.fill('#rentRollMonthlyRent_1_5', value=request.rent_roll_monthly_rent_1_5)
                 results.append(f"Filled #rentRollMonthlyRent_1_5 with {request.rent_roll_monthly_rent_1_5}")
-            if request.rent_roll_vacant_no_1_5 is not None and request.rent_roll_vacant_no_1_5.strip() != "":
+            if request.rent_roll_vacant_no_1_5 is not None:
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_5}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_5}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_5}")
@@ -1168,27 +1167,26 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_6
             if request.unit_type_1_6 is not None and request.unit_type_1_6.strip() != "":
                 await page.click('div#unitType_1_6_chosen')
-                await page.wait_for_selector(f'div#unitType_1_6_chosen + div ul.chosen-results li:has-text("{request.unit_type_1_6}")', state="visible")
-                option = page.locator(f'div#unitType_1_6_chosen + div ul.chosen-results li').filter(has_text=request.unit_type_1_6)
-                await option.scroll_into_view_if_needed()
-                await option.click()
+                dropdown_option = page.locator('div#unitType_1_6_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_6)
+                await dropdown_option.wait_for(timeout=5000)
+                await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_6} for entry 1_6")
-            if request.unit_num_1_6 is not None and request.unit_num_1_6.strip() != "":
+            if request.unit_num_1_6 is not None:
                 await page.fill('#unitNum_1_6', value=request.unit_num_1_6)
                 results.append(f"Filled #unitNum_1_6 with {request.unit_num_1_6}")
-            if request.sq_ft_1_6 is not None and request.sq_ft_1_6.strip() != "":
+            if request.sq_ft_1_6 is not None:
                 await page.fill('#sqFt_1_6', value=request.sq_ft_1_6)
                 results.append(f"Filled #sqFt_1_6 with {request.sq_ft_1_6}")
-            if request.rent_roll_market_rents_1_6 is not None and request.rent_roll_market_rents_1_6.strip() != "":
+            if request.rent_roll_market_rents_1_6 is not None:
                 await page.fill('#rentRollMarketRents_1_6', value=request.rent_roll_market_rents_1_6)
                 results.append(f"Filled #rentRollMarketRents_1_6 with {request.rent_roll_market_rents_1_6}")
-            if request.rent_roll_actual_rents_1_6 is not None and request.rent_roll_actual_rents_1_6.strip() != "":
+            if request.rent_roll_actual_rents_1_6 is not None:
                 await page.fill('#rentRollActualRents_1_6', value=request.rent_roll_actual_rents_1_6)
                 results.append(f"Filled #rentRollActualRents_1_6 with {request.rent_roll_actual_rents_1_6}")
-            if request.rent_roll_monthly_rent_1_6 is not None and request.rent_roll_monthly_rent_1_6.strip() != "":
+            if request.rent_roll_monthly_rent_1_6 is not None:
                 await page.fill('#rentRollMonthlyRent_1_6', value=request.rent_roll_monthly_rent_1_6)
                 results.append(f"Filled #rentRollMonthlyRent_1_6 with {request.rent_roll_monthly_rent_1_6}")
-            if request.rent_roll_vacant_no_1_6 is not None and request.rent_roll_vacant_no_1_6.strip() != "":
+            if request.rent_roll_vacant_no_1_6 is not None:
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_6}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_6}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_6}")
@@ -1201,27 +1199,26 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_7
             if request.unit_type_1_7 is not None and request.unit_type_1_7.strip() != "":
                 await page.click('div#unitType_1_7_chosen')
-                await page.wait_for_selector(f'div#unitType_1_7_chosen + div ul.chosen-results li:has-text("{request.unit_type_1_7}")', state="visible")
-                option = page.locator(f'div#unitType_1_7_chosen + div ul.chosen-results li').filter(has_text=request.unit_type_1_7)
-                await option.scroll_into_view_if_needed()
-                await option.click()
+                dropdown_option = page.locator('div#unitType_1_7_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_7)
+                await dropdown_option.wait_for(timeout=5000)
+                await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_7} for entry 1_7")
-            if request.unit_num_1_7 is not None and request.unit_num_1_7.strip() != "":
+            if request.unit_num_1_7 is not None:
                 await page.fill('#unitNum_1_7', value=request.unit_num_1_7)
                 results.append(f"Filled #unitNum_1_7 with {request.unit_num_1_7}")
-            if request.sq_ft_1_7 is not None and request.sq_ft_1_7.strip() != "":
+            if request.sq_ft_1_7 is not None:
                 await page.fill('#sqFt_1_7', value=request.sq_ft_1_7)
                 results.append(f"Filled #sqFt_1_7 with {request.sq_ft_1_7}")
-            if request.rent_roll_market_rents_1_7 is not None and request.rent_roll_market_rents_1_7.strip() != "":
+            if request.rent_roll_market_rents_1_7 is not None:
                 await page.fill('#rentRollMarketRents_1_7', value=request.rent_roll_market_rents_1_7)
                 results.append(f"Filled #rentRollMarketRents_1_7 with {request.rent_roll_market_rents_1_7}")
-            if request.rent_roll_actual_rents_1_7 is not None and request.rent_roll_actual_rents_1_7.strip() != "":
+            if request.rent_roll_actual_rents_1_7 is not None:
                 await page.fill('#rentRollActualRents_1_7', value=request.rent_roll_actual_rents_1_7)
                 results.append(f"Filled #rentRollActualRents_1_7 with {request.rent_roll_actual_rents_1_7}")
-            if request.rent_roll_monthly_rent_1_7 is not None and request.rent_roll_monthly_rent_1_7.strip() != "":
+            if request.rent_roll_monthly_rent_1_7 is not None:
                 await page.fill('#rentRollMonthlyRent_1_7', value=request.rent_roll_monthly_rent_1_7)
                 results.append(f"Filled #rentRollMonthlyRent_1_7 with {request.rent_roll_monthly_rent_1_7}")
-            if request.rent_roll_vacant_no_1_7 is not None and request.rent_roll_vacant_no_1_7.strip() != "":
+            if request.rent_roll_vacant_no_1_7 is not None:
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_7}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_7}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_7}")
@@ -1234,27 +1231,26 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_8
             if request.unit_type_1_8 is not None and request.unit_type_1_8.strip() != "":
                 await page.click('div#unitType_1_8_chosen')
-                await page.wait_for_selector(f'div#unitType_1_8_chosen + div ul.chosen-results li:has-text("{request.unit_type_1_8}")', state="visible")
-                option = page.locator(f'div#unitType_1_8_chosen + div ul.chosen-results li').filter(has_text=request.unit_type_1_8)
-                await option.scroll_into_view_if_needed()
-                await option.click()
+                dropdown_option = page.locator('div#unitType_1_8_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_8)
+                await dropdown_option.wait_for(timeout=5000)
+                await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_8} for entry 1_8")
-            if request.unit_num_1_8 is not None and request.unit_num_1_8.strip() != "":
+            if request.unit_num_1_8 is not None:
                 await page.fill('#unitNum_1_8', value=request.unit_num_1_8)
                 results.append(f"Filled #unitNum_1_8 with {request.unit_num_1_8}")
-            if request.sq_ft_1_8 is not None and request.sq_ft_1_8.strip() != "":
+            if request.sq_ft_1_8 is not None:
                 await page.fill('#sqFt_1_8', value=request.sq_ft_1_8)
                 results.append(f"Filled #sqFt_1_8 with {request.sq_ft_1_8}")
-            if request.rent_roll_market_rents_1_8 is not None and request.rent_roll_market_rents_1_8.strip() != "":
+            if request.rent_roll_market_rents_1_8 is not None:
                 await page.fill('#rentRollMarketRents_1_8', value=request.rent_roll_market_rents_1_8)
                 results.append(f"Filled #rentRollMarketRents_1_8 with {request.rent_roll_market_rents_1_8}")
-            if request.rent_roll_actual_rents_1_8 is not None and request.rent_roll_actual_rents_1_8.strip() != "":
+            if request.rent_roll_actual_rents_1_8 is not None:
                 await page.fill('#rentRollActualRents_1_8', value=request.rent_roll_actual_rents_1_8)
                 results.append(f"Filled #rentRollActualRents_1_8 with {request.rent_roll_actual_rents_1_8}")
-            if request.rent_roll_monthly_rent_1_8 is not None and request.rent_roll_monthly_rent_1_8.strip() != "":
+            if request.rent_roll_monthly_rent_1_8 is not None:
                 await page.fill('#rentRollMonthlyRent_1_8', value=request.rent_roll_monthly_rent_1_8)
                 results.append(f"Filled #rentRollMonthlyRent_1_8 with {request.rent_roll_monthly_rent_1_8}")
-            if request.rent_roll_vacant_no_1_8 is not None and request.rent_roll_vacant_no_1_8.strip() != "":
+            if request.rent_roll_vacant_no_1_8 is not None:
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_8}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_8}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_8}")
@@ -1267,27 +1263,26 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_9
             if request.unit_type_1_9 is not None and request.unit_type_1_9.strip() != "":
                 await page.click('div#unitType_1_9_chosen')
-                await page.wait_for_selector(f'div#unitType_1_9_chosen + div ul.chosen-results li:has-text("{request.unit_type_1_9}")', state="visible")
-                option = page.locator(f'div#unitType_1_9_chosen + div ul.chosen-results li').filter(has_text=request.unit_type_1_9)
-                await option.scroll_into_view_if_needed()
-                await option.click()
+                dropdown_option = page.locator('div#unitType_1_9_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_9)
+                await dropdown_option.wait_for(timeout=5000)
+                await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_9} for entry 1_9")
-            if request.unit_num_1_9 is not None and request.unit_num_1_9.strip() != "":
+            if request.unit_num_1_9 is not None:
                 await page.fill('#unitNum_1_9', value=request.unit_num_1_9)
                 results.append(f"Filled #unitNum_1_9 with {request.unit_num_1_9}")
-            if request.sq_ft_1_9 is not None and request.sq_ft_1_9.strip() != "":
+            if request.sq_ft_1_9 is not None:
                 await page.fill('#sqFt_1_9', value=request.sq_ft_1_9)
                 results.append(f"Filled #sqFt_1_9 with {request.sq_ft_1_9}")
-            if request.rent_roll_market_rents_1_9 is not None and request.rent_roll_market_rents_1_9.strip() != "":
+            if request.rent_roll_market_rents_1_9 is not None:
                 await page.fill('#rentRollMarketRents_1_9', value=request.rent_roll_market_rents_1_9)
                 results.append(f"Filled #rentRollMarketRents_1_9 with {request.rent_roll_market_rents_1_9}")
-            if request.rent_roll_actual_rents_1_9 is not None and request.rent_roll_actual_rents_1_9.strip() != "":
+            if request.rent_roll_actual_rents_1_9 is not None:
                 await page.fill('#rentRollActualRents_1_9', value=request.rent_roll_actual_rents_1_9)
                 results.append(f"Filled #rentRollActualRents_1_9 with {request.rent_roll_actual_rents_1_9}")
-            if request.rent_roll_monthly_rent_1_9 is not None and request.rent_roll_monthly_rent_1_9.strip() != "":
+            if request.rent_roll_monthly_rent_1_9 is not None:
                 await page.fill('#rentRollMonthlyRent_1_9', value=request.rent_roll_monthly_rent_1_9)
                 results.append(f"Filled #rentRollMonthlyRent_1_9 with {request.rent_roll_monthly_rent_1_9}")
-            if request.rent_roll_vacant_no_1_9 is not None and request.rent_roll_vacant_no_1_9.strip() != "":
+            if request.rent_roll_vacant_no_1_9 is not None:
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_9}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_9}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_9}")
@@ -1300,27 +1295,26 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_10
             if request.unit_type_1_10 is not None and request.unit_type_1_10.strip() != "":
                 await page.click('div#unitType_1_10_chosen')
-                await page.wait_for_selector(f'div#unitType_1_10_chosen + div ul.chosen-results li:has-text("{request.unit_type_1_10}")', state="visible")
-                option = page.locator(f'div#unitType_1_10_chosen + div ul.chosen-results li').filter(has_text=request.unit_type_1_10)
-                await option.scroll_into_view_if_needed()
-                await option.click()
+                dropdown_option = page.locator('div#unitType_1_10_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_10)
+                await dropdown_option.wait_for(timeout=5000)
+                await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_10} for entry 1_10")
-            if request.unit_num_1_10 is not None and request.unit_num_1_10.strip() != "":
+            if request.unit_num_1_10 is not None:
                 await page.fill('#unitNum_1_10', value=request.unit_num_1_10)
                 results.append(f"Filled #unitNum_1_10 with {request.unit_num_1_10}")
-            if request.sq_ft_1_10 is not None and request.sq_ft_1_10.strip() != "":
+            if request.sq_ft_1_10 is not None:
                 await page.fill('#sqFt_1_10', value=request.sq_ft_1_10)
                 results.append(f"Filled #sqFt_1_10 with {request.sq_ft_1_10}")
-            if request.rent_roll_market_rents_1_10 is not None and request.rent_roll_market_rents_1_10.strip() != "":
+            if request.rent_roll_market_rents_1_10 is not None:
                 await page.fill('#rentRollMarketRents_1_10', value=request.rent_roll_market_rents_1_10)
                 results.append(f"Filled #rentRollMarketRents_1_10 with {request.rent_roll_market_rents_1_10}")
-            if request.rent_roll_actual_rents_1_10 is not None and request.rent_roll_actual_rents_1_10.strip() != "":
+            if request.rent_roll_actual_rents_1_10 is not None:
                 await page.fill('#rentRollActualRents_1_10', value=request.rent_roll_actual_rents_1_10)
                 results.append(f"Filled #rentRollActualRents_1_10 with {request.rent_roll_actual_rents_1_10}")
-            if request.rent_roll_monthly_rent_1_10 is not None and request.rent_roll_monthly_rent_1_10.strip() != "":
+            if request.rent_roll_monthly_rent_1_10 is not None:
                 await page.fill('#rentRollMonthlyRent_1_10', value=request.rent_roll_monthly_rent_1_10)
                 results.append(f"Filled #rentRollMonthlyRent_1_10 with {request.rent_roll_monthly_rent_1_10}")
-            if request.rent_roll_vacant_no_1_10 is not None and request.rent_roll_vacant_no_1_10.strip() != "":
+            if request.rent_roll_vacant_no_1_10 is not None:
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_10}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_10}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_10}")
