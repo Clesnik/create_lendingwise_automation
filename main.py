@@ -1008,24 +1008,26 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.fill('#LBContactPhone', value=request.lb_contact_phone)
                 results.append(f"Filled #LBContactPhone with {request.lb_contact_phone}")
 
-            # Rent Roll Entry 1_1   
+            # Rent Roll Entry 1_1
             if request.unit_type_1_1 is not None and request.unit_type_1_1.strip() != "":
                 await page.click('div#unitType_1_1_chosen')
-                await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_1}")')
-                results.append(f"Selected unit type {request.unit_type_1_1}")
-            if request.unit_num_1_1 is not None:
+                dropdown_option = page.locator('div#unitType_1_1_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_1)
+                await dropdown_option.wait_for(timeout=5000)
+                await dropdown_option.click()
+                results.append(f"Selected unit type {request.unit_type_1_1} for entry 1_1")
+            if request.unit_num_1_1 is not None and request.unit_num_1_1.strip() != "":
                 await page.fill('#unitNum_1_1', value=request.unit_num_1_1)
                 results.append(f"Filled #unitNum_1_1 with {request.unit_num_1_1}")
-            if request.sq_ft_1_1 is not None:
+            if request.sq_ft_1_1 is not None and request.sq_ft_1_1.strip() != "":
                 await page.fill('#sqFt_1_1', value=request.sq_ft_1_1)
                 results.append(f"Filled #sqFt_1_1 with {request.sq_ft_1_1}")
-            if request.rent_roll_market_rents_1_1 is not None:
+            if request.rent_roll_market_rents_1_1 is not None and request.rent_roll_market_rents_1_1.strip() != "":
                 await page.fill('#rentRollMarketRents_1_1', value=request.rent_roll_market_rents_1_1)
                 results.append(f"Filled #rentRollMarketRents_1_1 with {request.rent_roll_market_rents_1_1}")
-            if request.rent_roll_actual_rents_1_1 is not None:
+            if request.rent_roll_actual_rents_1_1 is not None and request.rent_roll_actual_rents_1_1.strip() != "":
                 await page.fill('#rentRollActualRents_1_1', value=request.rent_roll_actual_rents_1_1)
                 results.append(f"Filled #rentRollActualRents_1_1 with {request.rent_roll_actual_rents_1_1}")
-            if request.rent_roll_monthly_rent_1_1 is not None:
+            if request.rent_roll_monthly_rent_1_1 is not None and request.rent_roll_monthly_rent_1_1.strip() != "":
                 await page.fill('#rentRollMonthlyRent_1_1', value=request.rent_roll_monthly_rent_1_1)
                 results.append(f"Filled #rentRollMonthlyRent_1_1 with {request.rent_roll_monthly_rent_1_1}")
             if request.rent_roll_vacant_no_1_1 is not None and request.rent_roll_vacant_no_1_1.strip() != "":
@@ -1041,8 +1043,10 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_2
             if request.unit_type_1_2 is not None and request.unit_type_1_2.strip() != "":
                 await page.click('div#unitType_1_2_chosen')
-                await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_2}")')
-                results.append(f"Selected unit type {request.unit_type_1_2}")
+                dropdown_option = page.locator('div#unitType_1_2_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_2)
+                await dropdown_option.wait_for(timeout=5000)
+                await dropdown_option.click()
+                results.append(f"Selected unit type {request.unit_type_1_2} for entry 1_2")
             if request.unit_num_1_2 is not None and request.unit_num_1_2.strip() != "":
                 await page.fill('#unitNum_1_2', value=request.unit_num_1_2)
                 results.append(f"Filled #unitNum_1_2 with {request.unit_num_1_2}")
@@ -1071,7 +1075,7 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_3
             if request.unit_type_1_3 is not None and request.unit_type_1_3.strip() != "":
                 await page.click('div#unitType_1_3_chosen')
-                dropdown_option = page.locator('div#unitType_1_3_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_3)
+                dropdown_option = page.locator('div#unitType_1_3_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_3)
                 await dropdown_option.wait_for(timeout=5000)
                 await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_3} for entry 1_3")
@@ -1103,7 +1107,7 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_4
             if request.unit_type_1_4 is not None and request.unit_type_1_4.strip() != "":
                 await page.click('div#unitType_1_4_chosen')
-                dropdown_option = page.locator('div#unitType_1_4_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_4)
+                dropdown_option = page.locator('div#unitType_1_4_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_4)
                 await dropdown_option.wait_for(timeout=5000)
                 await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_4} for entry 1_4")
@@ -1135,7 +1139,7 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_5
             if request.unit_type_1_5 is not None and request.unit_type_1_5.strip() != "":
                 await page.click('div#unitType_1_5_chosen')
-                dropdown_option = page.locator('div#unitType_1_5_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_5)
+                dropdown_option = page.locator('div#unitType_1_5_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_5)
                 await dropdown_option.wait_for(timeout=5000)
                 await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_5} for entry 1_5")
@@ -1167,7 +1171,7 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_6
             if request.unit_type_1_6 is not None and request.unit_type_1_6.strip() != "":
                 await page.click('div#unitType_1_6_chosen')
-                dropdown_option = page.locator('div#unitType_1_6_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_6)
+                dropdown_option = page.locator('div#unitType_1_6_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_6)
                 await dropdown_option.wait_for(timeout=5000)
                 await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_6} for entry 1_6")
@@ -1199,7 +1203,7 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_7
             if request.unit_type_1_7 is not None and request.unit_type_1_7.strip() != "":
                 await page.click('div#unitType_1_7_chosen')
-                dropdown_option = page.locator('div#unitType_1_7_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_7)
+                dropdown_option = page.locator('div#unitType_1_7_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_7)
                 await dropdown_option.wait_for(timeout=5000)
                 await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_7} for entry 1_7")
@@ -1231,7 +1235,7 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_8
             if request.unit_type_1_8 is not None and request.unit_type_1_8.strip() != "":
                 await page.click('div#unitType_1_8_chosen')
-                dropdown_option = page.locator('div#unitType_1_8_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_8)
+                dropdown_option = page.locator('div#unitType_1_8_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_8)
                 await dropdown_option.wait_for(timeout=5000)
                 await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_8} for entry 1_8")
@@ -1263,7 +1267,7 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_9
             if request.unit_type_1_9 is not None and request.unit_type_1_9.strip() != "":
                 await page.click('div#unitType_1_9_chosen')
-                dropdown_option = page.locator('div#unitType_1_9_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_9)
+                dropdown_option = page.locator('div#unitType_1_9_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_9)
                 await dropdown_option.wait_for(timeout=5000)
                 await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_9} for entry 1_9")
@@ -1295,7 +1299,7 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_10
             if request.unit_type_1_10 is not None and request.unit_type_1_10.strip() != "":
                 await page.click('div#unitType_1_10_chosen')
-                dropdown_option = page.locator('div#unitType_1_10_chosen + div ul.chosen-results li.active-result', has_text=request.unit_type_1_10)
+                dropdown_option = page.locator('div#unitType_1_10_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_10)
                 await dropdown_option.wait_for(timeout=5000)
                 await dropdown_option.click()
                 results.append(f"Selected unit type {request.unit_type_1_10} for entry 1_10")
