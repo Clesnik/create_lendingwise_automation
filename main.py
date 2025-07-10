@@ -961,10 +961,7 @@ async def run_playwright_actions(request: ActionRequest):
                 results.append(f"Filled #lot_1 with {request.subject_property_lot}")
             if request.subject_property_type is not None and request.subject_property_type.strip() != "":
                 await page.click('div#propertyType_chosen')
-                await page.wait_for_timeout(500)
-                dropdown_option = page.locator(f'div#propertyType_chosen + div ul.chosen-results li.active-result').filter(has_text=request.subject_property_type)
-                await dropdown_option.wait_for(timeout=5000)
-                await dropdown_option.click()
+                await page.click(f'ul.chosen-results li:has-text("{request.subject_property_type}")')
                 results.append(f"Selected property type {request.subject_property_type}")
             if request.subject_property_sqft is not None:
                 await page.fill('#propertySqFt', value=request.subject_property_sqft)
