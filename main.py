@@ -1038,7 +1038,10 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_2
             if request.unit_type_1_2 is not None and request.unit_type_1_2.strip() != "":
                 await page.click('div#unitType_1_2_chosen')
-                await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_2}")')
+                await page.wait_for_selector(f'ul.chosen-results li:has-text("{request.unit_type_1_2}")', state="visible")
+                option = page.locator(f'ul.chosen-results li:has-text("{request.unit_type_1_2}")')
+                await option.scroll_into_view_if_needed()
+                await option.click()
                 results.append(f"Selected unit type {request.unit_type_1_2} for entry 1_2")
             if request.unit_num_1_2 is not None and request.unit_num_1_2.strip() != "":
                 await page.fill('#unitNum_1_2', value=request.unit_num_1_2)
@@ -1067,7 +1070,10 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_3
             if request.unit_type_1_3 is not None and request.unit_type_1_3.strip() != "":
                 await page.click('div#unitType_1_3_chosen')
-                await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_3}")')
+                await page.wait_for_selector(f'ul.chosen-results li:has-text("{request.unit_type_1_3}")', state="visible")
+                option = page.locator(f'ul.chosen-results li:has-text("{request.unit_type_1_3}")')
+                await option.scroll_into_view_if_needed()
+                await option.click()
                 results.append(f"Selected unit type {request.unit_type_1_3} for entry 1_3")
             if request.unit_num_1_3 is not None and request.unit_num_1_3.strip() != "":
                 await page.fill('#unitNum_1_3', value=request.unit_num_1_3)
@@ -1096,7 +1102,10 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_4
             if request.unit_type_1_4 is not None and request.unit_type_1_4.strip() != "":
                 await page.click('div#unitType_1_4_chosen')
-                await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_4}")')
+                await page.wait_for_selector(f'ul.chosen-results li:has-text("{request.unit_type_1_4}")', state="visible")
+                option = page.locator(f'ul.chosen-results li:has-text("{request.unit_type_1_4}")')
+                await option.scroll_into_view_if_needed()
+                await option.click()
                 results.append(f"Selected unit type {request.unit_type_1_4} for entry 1_4")
             if request.unit_num_1_4 is not None and request.unit_num_1_4.strip() != "":
                 await page.fill('#unitNum_1_4', value=request.unit_num_1_4)
@@ -1125,7 +1134,10 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_5
             if request.unit_type_1_5 is not None and request.unit_type_1_5.strip() != "":
                 await page.click('div#unitType_1_5_chosen')
-                await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_5}")')
+                await page.wait_for_selector(f'ul.chosen-results li:has-text("{request.unit_type_1_5}")', state="visible")
+                option = page.locator(f'ul.chosen-results li:has-text("{request.unit_type_1_5}")')
+                await option.scroll_into_view_if_needed()
+                await option.click()
                 results.append(f"Selected unit type {request.unit_type_1_5} for entry 1_5")
             if request.unit_num_1_5 is not None and request.unit_num_1_5.strip() != "":
                 await page.fill('#unitNum_1_5', value=request.unit_num_1_5)
@@ -1154,7 +1166,10 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_6
             if request.unit_type_1_6 is not None and request.unit_type_1_6.strip() != "":
                 await page.click('div#unitType_1_6_chosen')
-                await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_6}")')
+                await page.wait_for_selector(f'ul.chosen-results li:has-text("{request.unit_type_1_6}")', state="visible")
+                option = page.locator(f'ul.chosen-results li:has-text("{request.unit_type_1_6}")')
+                await option.scroll_into_view_if_needed()
+                await option.click()
                 results.append(f"Selected unit type {request.unit_type_1_6} for entry 1_6")
             if request.unit_num_1_6 is not None and request.unit_num_1_6.strip() != "":
                 await page.fill('#unitNum_1_6', value=request.unit_num_1_6)
@@ -1183,7 +1198,10 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_7
             if request.unit_type_1_7 is not None and request.unit_type_1_7.strip() != "":
                 await page.click('div#unitType_1_7_chosen')
-                await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_7}")')
+                await page.wait_for_selector(f'ul.chosen-results li:has-text("{request.unit_type_1_7}")', state="visible")
+                option = page.locator(f'ul.chosen-results li:has-text("{request.unit_type_1_7}")')
+                await option.scroll_into_view_if_needed()
+                await option.click()
                 results.append(f"Selected unit type {request.unit_type_1_7} for entry 1_7")
             if request.unit_num_1_7 is not None and request.unit_num_1_7.strip() != "":
                 await page.fill('#unitNum_1_7', value=request.unit_num_1_7)
@@ -1212,7 +1230,10 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_8
             if request.unit_type_1_8 is not None and request.unit_type_1_8.strip() != "":
                 await page.click('div#unitType_1_8_chosen')
-                await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_8}")')
+                await page.wait_for_selector(f'ul.chosen-results li:has-text("{request.unit_type_1_8}")', state="visible")
+                option = page.locator(f'ul.chosen-results li:has-text("{request.unit_type_1_8}")')
+                await option.scroll_into_view_if_needed()
+                await option.click()
                 results.append(f"Selected unit type {request.unit_type_1_8} for entry 1_8")
             if request.unit_num_1_8 is not None and request.unit_num_1_8.strip() != "":
                 await page.fill('#unitNum_1_8', value=request.unit_num_1_8)
@@ -1241,7 +1262,10 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_9
             if request.unit_type_1_9 is not None and request.unit_type_1_9.strip() != "":
                 await page.click('div#unitType_1_9_chosen')
-                await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_9}")')
+                await page.wait_for_selector(f'ul.chosen-results li:has-text("{request.unit_type_1_9}")', state="visible")
+                option = page.locator(f'ul.chosen-results li:has-text("{request.unit_type_1_9}")')
+                await option.scroll_into_view_if_needed()
+                await option.click()
                 results.append(f"Selected unit type {request.unit_type_1_9} for entry 1_9")
             if request.unit_num_1_9 is not None and request.unit_num_1_9.strip() != "":
                 await page.fill('#unitNum_1_9', value=request.unit_num_1_9)
@@ -1270,7 +1294,10 @@ async def run_playwright_actions(request: ActionRequest):
                     # Rent Roll Entry 1_10
             if request.unit_type_1_10 is not None and request.unit_type_1_10.strip() != "":
                 await page.click('div#unitType_1_10_chosen')
-                await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_10}")')
+                await page.wait_for_selector(f'ul.chosen-results li:has-text("{request.unit_type_1_10}")', state="visible")
+                option = page.locator(f'ul.chosen-results li:has-text("{request.unit_type_1_10}")')
+                await option.scroll_into_view_if_needed()
+                await option.click()
                 results.append(f"Selected unit type {request.unit_type_1_10} for entry 1_10")
             if request.unit_num_1_10 is not None and request.unit_num_1_10.strip() != "":
                 await page.fill('#unitNum_1_10', value=request.unit_num_1_10)
