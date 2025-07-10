@@ -1037,6 +1037,10 @@ async def run_playwright_actions(request: ActionRequest):
             results.append("Waited for new rent roll form to render")
 
                     # Rent Roll Entry 1_2
+            if request.unit_type_1_2 is not None and request.unit_type_1_2.strip() != "":
+                await page.click('div#unitType_1_2_chosen')
+                await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_2}")')
+                results.append(f"Selected unit type {request.unit_type_1_2}")
             if request.unit_num_1_2 is not None and request.unit_num_1_2.strip() != "":
                 await page.fill('#unitNum_1_2', value=request.unit_num_1_2)
                 results.append(f"Filled #unitNum_1_2 with {request.unit_num_1_2}")
