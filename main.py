@@ -1045,6 +1045,11 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_1}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_1}")
             if getattr(request, 'addUnit_1_2', False):
+                await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
+                await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
+                results.append("Clicked plus icon to add more rent roll entries (2)")
+                await page.wait_for_selector('div#unitType_1_2_chosen', timeout=10000)
+                results.append("Waited for new rent roll form to render (2)")
                 if request.unit_type_1_2 is not None and request.unit_type_1_2.strip() != "":
                     await page.click('div#unitType_1_2_chosen')
                     dropdown_option = page.locator('div#unitType_1_2_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_2)
