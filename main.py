@@ -778,45 +778,45 @@ async def run_playwright_actions(request: ActionRequest):
                 results.append("Clicked addOrRemoveAdditionalGuarantors link")
                 await page.wait_for_timeout(1000)
                 results.append("Waited 1s for new member form (guarantor 1)")
-            if request.pg_four_fname is not None:
+            if getattr(request, 'addGuarantor1', False) and request.pg_four_fname is not None and request.pg_four_fname.strip() != "":
                 await page.fill('#guarantorFName_1', value=request.pg_four_fname)
                 results.append(f"Filled #guarantorFName_1 with {request.pg_four_fname}")
-            if request.pg_four_mname is not None:
+            if getattr(request, 'addGuarantor1', False) and request.pg_four_mname is not None and request.pg_four_mname.strip() != "":
                 await page.fill('#guarantorMName_1', value=request.pg_four_mname)
                 results.append(f"Filled #guarantorMName_1 with {request.pg_four_mname}")
-            if request.pg_four_lname is not None:
+            if getattr(request, 'addGuarantor1', False) and request.pg_four_lname is not None and request.pg_four_lname.strip() != "":
                 await page.fill('#guarantorLName_1', value=request.pg_four_lname)
                 results.append(f"Filled #guarantorLName_1 with {request.pg_four_lname}")
-            if request.pg_four_cell is not None:
+            if getattr(request, 'addGuarantor1', False) and request.pg_four_cell is not None and request.pg_four_cell.strip() != "":
                 await page.fill('#guarantorCellNumber_1', value=request.pg_four_cell)
                 results.append(f"Filled #guarantorCellNumber_1 with {request.pg_four_cell}")
-            if request.pg_four_ssn is not None:
+            if getattr(request, 'addGuarantor1', False) and request.pg_four_ssn is not None and request.pg_four_ssn.strip() != "":
                 await page.fill('#guarantorSSN_1', value=request.pg_four_ssn)
                 results.append(f"Filled #guarantorSSN_1 with {request.pg_four_ssn}")
-            if request.pg_four_dob is not None:
+            if getattr(request, 'addGuarantor1', False) and request.pg_four_dob is not None and request.pg_four_dob.strip() != "":
                 await page.fill('#guarantorDOB_1', value=request.pg_four_dob)
                 results.append(f"Filled #guarantorDOB_1 with {request.pg_four_dob}")
                 await page.click('body', position={'x': 10, 'y': 10})
                 results.append("Clicked body after pg_four_dob")
-            if request.pg_four_marital_status is not None:
+            if getattr(request, 'addGuarantor1', False) and request.pg_four_marital_status is not None and request.pg_four_marital_status.strip() != "":
                 await page.select_option('#guarantorStatus_1', value=request.pg_four_marital_status)
                 results.append(f"Selected #guarantorStatus_1 with {request.pg_four_marital_status}")
-            if request.pg_four_street is not None:
+            if getattr(request, 'addGuarantor1', False) and request.pg_four_street is not None and request.pg_four_street.strip() != "":
                 await page.fill('#guarantorAddress_1', value=request.pg_four_street)
                 results.append(f"Filled #guarantorAddress_1 with {request.pg_four_street}")
-            if request.pg_four_city is not None:
+            if getattr(request, 'addGuarantor1', False) and request.pg_four_city is not None and request.pg_four_city.strip() != "":
                 await page.fill('#guarantorCity_1', value=request.pg_four_city)
                 results.append(f"Filled #guarantorCity_1 with {request.pg_four_city}")
-            if request.pg_four_state is not None:
+            if getattr(request, 'addGuarantor1', False) and request.pg_four_state is not None and request.pg_four_state.strip() != "":
                 await page.select_option('#guarantorState_1', value=request.pg_four_state)
                 results.append(f"Selected #guarantorState_1 with {request.pg_four_state}")
-            if request.pg_four_zip is not None:
+            if getattr(request, 'addGuarantor1', False) and request.pg_four_zip is not None and request.pg_four_zip.strip() != "":
                 await page.fill('#guarantorZip_1', value=request.pg_four_zip)
                 results.append(f"Filled #guarantorZip_1 with {request.pg_four_zip}")
-            if request.pg_four_email is not None:
+            if getattr(request, 'addGuarantor1', False) and request.pg_four_email is not None and request.pg_four_email.strip() != "":
                 await page.fill('#guarantorEmail_1', value=request.pg_four_email)
                 results.append(f"Filled #guarantorEmail_1 with {request.pg_four_email}")
-            if request.pg_four_citizenship is not None:
+            if getattr(request, 'addGuarantor1', False) and request.pg_four_citizenship is not None and request.pg_four_citizenship.strip() != "":
                 await page.wait_for_selector(f'label[for="{request.pg_four_citizenship}"]', timeout=10000)
                 await page.click(f'label[for="{request.pg_four_citizenship}"]')
                 results.append(f"Clicked label for {request.pg_four_citizenship}")
