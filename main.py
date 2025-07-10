@@ -1035,14 +1035,11 @@ async def run_playwright_actions(request: ActionRequest):
             await page.wait_for_timeout(1000)
             results.append("Waited 1s for new rent roll form to render")
 
-            # Rent Roll Entry 1_2
-            if request.unit_type_1_2 is not None and request.unit_type_1_2.strip() != "":
-                await page.click('div#unitType_1_2_chosen')
-                await page.wait_for_timeout(500)
-                dropdown_option = page.locator(f'div#unitType_1_2_chosen + div ul.chosen-results li.active-result').filter(has_text=request.unit_type_1_2)
-                await dropdown_option.wait_for(timeout=5000)
-                await dropdown_option.click()
-                results.append(f"Selected unit type {request.unit_type_1_2} for entry 1_2")
+                    # Rent Roll Entry 1_2
+        if request.unit_type_1_2 is not None and request.unit_type_1_2.strip() != "":
+            await page.click('div#unitType_1_2_chosen')
+            await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_2}")')
+            results.append(f"Selected unit type {request.unit_type_1_2} for entry 1_2")
             if request.unit_num_1_2 is not None and request.unit_num_1_2.strip() != "":
                 await page.fill('#unitNum_1_2', value=request.unit_num_1_2)
                 results.append(f"Filled #unitNum_1_2 with {request.unit_num_1_2}")
@@ -1067,14 +1064,11 @@ async def run_playwright_actions(request: ActionRequest):
             await page.wait_for_timeout(1000)
             results.append("Waited 1s for new rent roll form to render")
 
-            # Rent Roll Entry 1_3
-            if request.unit_type_1_3 is not None and request.unit_type_1_3.strip() != "":
-                await page.click('div#unitType_1_3_chosen')
-                await page.wait_for_timeout(500)
-                dropdown_option = page.locator(f'div#unitType_1_3_chosen + div ul.chosen-results li.active-result').filter(has_text=request.unit_type_1_3)
-                await dropdown_option.wait_for(timeout=5000)
-                await dropdown_option.click()
-                results.append(f"Selected unit type {request.unit_type_1_3} for entry 1_3")
+                    # Rent Roll Entry 1_3
+        if request.unit_type_1_3 is not None and request.unit_type_1_3.strip() != "":
+            await page.click('div#unitType_1_3_chosen')
+            await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_3}")')
+            results.append(f"Selected unit type {request.unit_type_1_3} for entry 1_3")
             if request.unit_num_1_3 is not None and request.unit_num_1_3.strip() != "":
                 await page.fill('#unitNum_1_3', value=request.unit_num_1_3)
                 results.append(f"Filled #unitNum_1_3 with {request.unit_num_1_3}")
@@ -1099,14 +1093,11 @@ async def run_playwright_actions(request: ActionRequest):
             await page.wait_for_timeout(1000)
             results.append("Waited 1s for new rent roll form to render")
 
-            # Rent Roll Entry 1_4
-            if request.unit_type_1_4 is not None and request.unit_type_1_4.strip() != "":
-                await page.click('div#unitType_1_4_chosen')
-                await page.wait_for_timeout(500)
-                dropdown_option = page.locator(f'div#unitType_1_4_chosen + div ul.chosen-results li.active-result').filter(has_text=request.unit_type_1_4)
-                await dropdown_option.wait_for(timeout=5000)
-                await dropdown_option.click()
-                results.append(f"Selected unit type {request.unit_type_1_4} for entry 1_4")
+                    # Rent Roll Entry 1_4
+        if request.unit_type_1_4 is not None and request.unit_type_1_4.strip() != "":
+            await page.click('div#unitType_1_4_chosen')
+            await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_4}")')
+            results.append(f"Selected unit type {request.unit_type_1_4} for entry 1_4")
             if request.unit_num_1_4 is not None and request.unit_num_1_4.strip() != "":
                 await page.fill('#unitNum_1_4', value=request.unit_num_1_4)
                 results.append(f"Filled #unitNum_1_4 with {request.unit_num_1_4}")
@@ -1131,14 +1122,11 @@ async def run_playwright_actions(request: ActionRequest):
             await page.wait_for_timeout(1000)
             results.append("Waited 1s for new rent roll form to render")
 
-            # Rent Roll Entry 1_5
-            if request.unit_type_1_5 is not None and request.unit_type_1_5.strip() != "":
-                await page.click('div#unitType_1_5_chosen')
-                await page.wait_for_timeout(500)
-                dropdown_option = page.locator(f'div#unitType_1_5_chosen + div ul.chosen-results li.active-result').filter(has_text=request.unit_type_1_5)
-                await dropdown_option.wait_for(timeout=5000)
-                await dropdown_option.click()
-                results.append(f"Selected unit type {request.unit_type_1_5} for entry 1_5")
+                    # Rent Roll Entry 1_5
+        if request.unit_type_1_5 is not None and request.unit_type_1_5.strip() != "":
+            await page.click('div#unitType_1_5_chosen')
+            await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_5}")')
+            results.append(f"Selected unit type {request.unit_type_1_5} for entry 1_5")
             if request.unit_num_1_5 is not None and request.unit_num_1_5.strip() != "":
                 await page.fill('#unitNum_1_5', value=request.unit_num_1_5)
                 results.append(f"Filled #unitNum_1_5 with {request.unit_num_1_5}")
@@ -1163,14 +1151,11 @@ async def run_playwright_actions(request: ActionRequest):
             await page.wait_for_timeout(1000)
             results.append("Waited 1s for new rent roll form to render")
 
-            # Rent Roll Entry 1_6
-            if request.unit_type_1_6 is not None and request.unit_type_1_6.strip() != "":
-                await page.click('div#unitType_1_6_chosen')
-                await page.wait_for_timeout(500)
-                dropdown_option = page.locator(f'div#unitType_1_6_chosen + div ul.chosen-results li.active-result').filter(has_text=request.unit_type_1_6)
-                await dropdown_option.wait_for(timeout=5000)
-                await dropdown_option.click()
-                results.append(f"Selected unit type {request.unit_type_1_6} for entry 1_6")
+                    # Rent Roll Entry 1_6
+        if request.unit_type_1_6 is not None and request.unit_type_1_6.strip() != "":
+            await page.click('div#unitType_1_6_chosen')
+            await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_6}")')
+            results.append(f"Selected unit type {request.unit_type_1_6} for entry 1_6")
             if request.unit_num_1_6 is not None and request.unit_num_1_6.strip() != "":
                 await page.fill('#unitNum_1_6', value=request.unit_num_1_6)
                 results.append(f"Filled #unitNum_1_6 with {request.unit_num_1_6}")
@@ -1195,14 +1180,11 @@ async def run_playwright_actions(request: ActionRequest):
             await page.wait_for_timeout(1000)
             results.append("Waited 1s for new rent roll form to render")
 
-            # Rent Roll Entry 1_7
-            if request.unit_type_1_7 is not None and request.unit_type_1_7.strip() != "":
-                await page.click('div#unitType_1_7_chosen')
-                await page.wait_for_timeout(500)
-                dropdown_option = page.locator(f'div#unitType_1_7_chosen + div ul.chosen-results li.active-result').filter(has_text=request.unit_type_1_7)
-                await dropdown_option.wait_for(timeout=5000)
-                await dropdown_option.click()
-                results.append(f"Selected unit type {request.unit_type_1_7} for entry 1_7")
+                    # Rent Roll Entry 1_7
+        if request.unit_type_1_7 is not None and request.unit_type_1_7.strip() != "":
+            await page.click('div#unitType_1_7_chosen')
+            await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_7}")')
+            results.append(f"Selected unit type {request.unit_type_1_7} for entry 1_7")
             if request.unit_num_1_7 is not None and request.unit_num_1_7.strip() != "":
                 await page.fill('#unitNum_1_7', value=request.unit_num_1_7)
                 results.append(f"Filled #unitNum_1_7 with {request.unit_num_1_7}")
@@ -1227,14 +1209,11 @@ async def run_playwright_actions(request: ActionRequest):
             await page.wait_for_timeout(1000)
             results.append("Waited 1s for new rent roll form to render")
 
-            # Rent Roll Entry 1_8
-            if request.unit_type_1_8 is not None and request.unit_type_1_8.strip() != "":
-                await page.click('div#unitType_1_8_chosen')
-                await page.wait_for_timeout(500)
-                dropdown_option = page.locator(f'div#unitType_1_8_chosen + div ul.chosen-results li.active-result').filter(has_text=request.unit_type_1_8)
-                await dropdown_option.wait_for(timeout=5000)
-                await dropdown_option.click()
-                results.append(f"Selected unit type {request.unit_type_1_8} for entry 1_8")
+                    # Rent Roll Entry 1_8
+        if request.unit_type_1_8 is not None and request.unit_type_1_8.strip() != "":
+            await page.click('div#unitType_1_8_chosen')
+            await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_8}")')
+            results.append(f"Selected unit type {request.unit_type_1_8} for entry 1_8")
             if request.unit_num_1_8 is not None and request.unit_num_1_8.strip() != "":
                 await page.fill('#unitNum_1_8', value=request.unit_num_1_8)
                 results.append(f"Filled #unitNum_1_8 with {request.unit_num_1_8}")
@@ -1259,14 +1238,11 @@ async def run_playwright_actions(request: ActionRequest):
             await page.wait_for_timeout(1000)
             results.append("Waited 1s for new rent roll form to render")
 
-            # Rent Roll Entry 1_9
-            if request.unit_type_1_9 is not None and request.unit_type_1_9.strip() != "":
-                await page.click('div#unitType_1_9_chosen')
-                await page.wait_for_timeout(500)
-                dropdown_option = page.locator(f'div#unitType_1_9_chosen + div ul.chosen-results li.active-result').filter(has_text=request.unit_type_1_9)
-                await dropdown_option.wait_for(timeout=5000)
-                await dropdown_option.click()
-                results.append(f"Selected unit type {request.unit_type_1_9} for entry 1_9")
+                    # Rent Roll Entry 1_9
+        if request.unit_type_1_9 is not None and request.unit_type_1_9.strip() != "":
+            await page.click('div#unitType_1_9_chosen')
+            await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_9}")')
+            results.append(f"Selected unit type {request.unit_type_1_9} for entry 1_9")
             if request.unit_num_1_9 is not None and request.unit_num_1_9.strip() != "":
                 await page.fill('#unitNum_1_9', value=request.unit_num_1_9)
                 results.append(f"Filled #unitNum_1_9 with {request.unit_num_1_9}")
@@ -1291,14 +1267,11 @@ async def run_playwright_actions(request: ActionRequest):
             await page.wait_for_timeout(1000)
             results.append("Waited 1s for new rent roll form to render")
 
-            # Rent Roll Entry 1_10
-            if request.unit_type_1_10 is not None and request.unit_type_1_10.strip() != "":
-                await page.click('div#unitType_1_10_chosen')
-                await page.wait_for_timeout(500)
-                dropdown_option = page.locator(f'div#unitType_1_10_chosen + div ul.chosen-results li.active-result').filter(has_text=request.unit_type_1_10)
-                await dropdown_option.wait_for(timeout=5000)
-                await dropdown_option.click()
-                results.append(f"Selected unit type {request.unit_type_1_10} for entry 1_10")
+                    # Rent Roll Entry 1_10
+        if request.unit_type_1_10 is not None and request.unit_type_1_10.strip() != "":
+            await page.click('div#unitType_1_10_chosen')
+            await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_10}")')
+            results.append(f"Selected unit type {request.unit_type_1_10} for entry 1_10")
             if request.unit_num_1_10 is not None and request.unit_num_1_10.strip() != "":
                 await page.fill('#unitNum_1_10', value=request.unit_num_1_10)
                 results.append(f"Filled #unitNum_1_10 with {request.unit_num_1_10}")
