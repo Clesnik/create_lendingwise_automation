@@ -324,15 +324,19 @@ async def run_playwright_actions(request: ActionRequest):
             if request.secondary_agent is not None:
                 await page.select_option('select#secondaryAgentId', label=request.secondary_agent)
                 results.append(f"Selected secondaryAgentId with {request.secondary_agent}")
-            await page.click('div#LMRClientType_chosen')
-            results.append("Clicked LMRClientType_chosen")
-            if request.loan_program is not None:
-                await page.click(f'ul.chosen-results li.active-result:has-text("{request.loan_program}")')
+            if request.loan_program is not None and request.loan_program.strip() != "":
+                await page.click('div#LMRClientType_chosen')
+                await page.wait_for_selector(f'div#LMRClientType_chosen + div ul.chosen-results li:has-text("{request.loan_program}")', state="visible")
+                option = page.locator('div#LMRClientType_chosen + div ul.chosen-results li').filter(has_text=request.loan_program)
+                await option.scroll_into_view_if_needed()
+                await option.click()
                 results.append(f"Selected loan program {request.loan_program}")
-            await page.click('div#LMRInternalLoanProgram_chosen')
-            results.append("Clicked LMRInternalLoanProgram_chosen")
-            if request.internal_program is not None:
-                await page.click(f'ul.chosen-results li.active-result:has-text("{request.internal_program}")')
+            if request.internal_program is not None and request.internal_program.strip() != "":
+                await page.click('div#LMRInternalLoanProgram_chosen')
+                await page.wait_for_selector(f'div#LMRInternalLoanProgram_chosen + div ul.chosen-results li:has-text("{request.internal_program}")', state="visible")
+                option = page.locator('div#LMRInternalLoanProgram_chosen + div ul.chosen-results li').filter(has_text=request.internal_program)
+                await option.scroll_into_view_if_needed()
+                await option.click()
                 results.append(f"Selected internal program {request.internal_program}")
             if request.prop_process is not None:
                 await page.select_option('#propDetailsProcess', value=request.prop_process)
@@ -996,7 +1000,10 @@ async def run_playwright_actions(request: ActionRequest):
             try:
                 if request.subject_property_type is not None and request.subject_property_type.strip() != "":
                     await page.click('div#propertyType_chosen')
-                    await page.click(f'ul.chosen-results li:has-text("{request.subject_property_type}")')
+                    await page.wait_for_selector(f'div#propertyType_chosen + div ul.chosen-results li:has-text("{request.subject_property_type}")', state="visible")
+                    option = page.locator('div#propertyType_chosen + div ul.chosen-results li').filter(has_text=request.subject_property_type)
+                    await option.scroll_into_view_if_needed()
+                    await option.click()
                     results.append(f"Selected property type {request.subject_property_type}")
             except Exception as e:
                 results.append(f"Skipped property type dropdown due to error: {str(e)}")
@@ -1102,7 +1109,10 @@ async def run_playwright_actions(request: ActionRequest):
             try:
                 if request.unit_type_1_1 is not None and request.unit_type_1_1.strip() != "":
                     await page.click('div#unitType_1_1_chosen')
-                    await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_1}")')
+                    await page.wait_for_selector(f'div#unitType_1_1_chosen + div ul.chosen-results li:has-text("{request.unit_type_1_1}")', state="visible")
+                    option = page.locator('div#unitType_1_1_chosen + div ul.chosen-results li').filter(has_text=request.unit_type_1_1)
+                    await option.scroll_into_view_if_needed()
+                    await option.click()
                     results.append(f"Selected unit type {request.unit_type_1_1}")
             except Exception as e:
                 results.append(f"Skipped unit_type_1_1 dropdown due to error: {str(e)}")
