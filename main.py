@@ -1009,10 +1009,7 @@ async def run_playwright_actions(request: ActionRequest):
                 results.append(f"Filled #LBContactPhone with {request.lb_contact_phone}")
             if request.unit_type_1_1 is not None and request.unit_type_1_1.strip() != "":
                 await page.click('div#unitType_1_1_chosen')
-                await page.wait_for_timeout(500)
-                dropdown_option = page.locator(f'div#unitType_1_1_chosen + div ul.chosen-results li.active-result').filter(has_text=request.unit_type_1_1)
-                await dropdown_option.wait_for(timeout=5000)
-                await dropdown_option.click()
+                await page.click(f'ul.chosen-results li:has-text("{request.unit_type_1_1}")')
                 results.append(f"Selected unit type {request.unit_type_1_1}")
             if request.unit_num_1_1 is not None:
                 await page.fill('#unitNum_1_1', value=request.unit_num_1_1)
