@@ -287,6 +287,16 @@ class ActionRequest(BaseModel):
     pro_ins_name_1: Optional[str] = None
     pro_inc_email_1: Optional[str] = None
     pro_inc_ph_1: Optional[str] = None
+    addUnit_1_2: Optional[bool] = False
+    addUnit_1_3: Optional[bool] = False
+    addUnit_1_4: Optional[bool] = False
+    addUnit_1_5: Optional[bool] = False
+    addUnit_1_6: Optional[bool] = False
+    addUnit_1_7: Optional[bool] = False
+    addUnit_1_8: Optional[bool] = False
+    addUnit_1_9: Optional[bool] = False
+    addUnit_1_10: Optional[bool] = False
+    addGuarantor1: Optional[bool] = False
 
 async def run_playwright_actions(request: ActionRequest):
     results = []
@@ -760,7 +770,7 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector(f'label[for="{request.pg_three_citizenship}"]', timeout=10000)
                 await page.click(f'label[for="{request.pg_three_citizenship}"]')
                 results.append(f"Clicked label for {request.pg_three_citizenship}")
-            if request.additional_guarantors is not None and request.additional_guarantors.strip() != "":
+            if request.additional_guarantors is not None and request.additional_guarantors.strip() != "" and getattr(request, 'addGuarantor1', False):
                 await page.wait_for_timeout(1000)
                 results.append("Waited 1s for new member form (guarantor)")
                 await page.wait_for_selector('a[onclick*="addOrRemoveAdditionalGuarantors"]', timeout=10000)
@@ -1034,13 +1044,12 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_1}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_1}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_1}")
-            await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
-            await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
-            results.append("Clicked plus icon to add more rent roll entries")
-            await page.wait_for_selector('div#unitType_1_2_chosen', timeout=10000)
-            results.append("Waited for new rent roll form to render")
-
-                    # Rent Roll Entry 1_2
+            if getattr(request, 'addUnit_1_2', False):
+                await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
+                await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
+                results.append(f"Clicked plus icon to add more rent roll entries (2)")
+                await page.wait_for_selector('div#unitType_1_2_chosen', timeout=10000)
+                results.append(f"Waited for new rent roll form to render (2)")
             if request.unit_type_1_2 is not None and request.unit_type_1_2.strip() != "":
                 await page.click('div#unitType_1_2_chosen')
                 dropdown_option = page.locator('div#unitType_1_2_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_2)
@@ -1066,13 +1075,12 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_2}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_2}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_2}")
-            await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
-            await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
-            results.append("Clicked plus icon to add more rent roll entries")
-            await page.wait_for_selector('div#unitType_1_3_chosen', timeout=10000)
-            results.append("Waited for new rent roll form to render")
-
-                    # Rent Roll Entry 1_3
+            if getattr(request, 'addUnit_1_3', False):
+                await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
+                await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
+                results.append(f"Clicked plus icon to add more rent roll entries (3)")
+                await page.wait_for_selector('div#unitType_1_3_chosen', timeout=10000)
+                results.append(f"Waited for new rent roll form to render (3)")
             if request.unit_type_1_3 is not None and request.unit_type_1_3.strip() != "":
                 await page.click('div#unitType_1_3_chosen')
                 dropdown_option = page.locator('div#unitType_1_3_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_3)
@@ -1098,13 +1106,12 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_3}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_3}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_3}")
-            await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
-            await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
-            results.append("Clicked plus icon to add more rent roll entries")
-            await page.wait_for_selector('div#unitType_1_4_chosen', timeout=10000)
-            results.append("Waited for new rent roll form to render")
-
-                    # Rent Roll Entry 1_4
+            if getattr(request, 'addUnit_1_4', False):
+                await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
+                await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
+                results.append(f"Clicked plus icon to add more rent roll entries (4)")
+                await page.wait_for_selector('div#unitType_1_4_chosen', timeout=10000)
+                results.append(f"Waited for new rent roll form to render (4)")
             if request.unit_type_1_4 is not None and request.unit_type_1_4.strip() != "":
                 await page.click('div#unitType_1_4_chosen')
                 dropdown_option = page.locator('div#unitType_1_4_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_4)
@@ -1130,13 +1137,12 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_4}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_4}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_4}")
-            await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
-            await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
-            results.append("Clicked plus icon to add more rent roll entries")
-            await page.wait_for_selector('div#unitType_1_5_chosen', timeout=10000)
-            results.append("Waited for new rent roll form to render")
-
-                    # Rent Roll Entry 1_5
+            if getattr(request, 'addUnit_1_5', False):
+                await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
+                await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
+                results.append(f"Clicked plus icon to add more rent roll entries (5)")
+                await page.wait_for_selector('div#unitType_1_5_chosen', timeout=10000)
+                results.append(f"Waited for new rent roll form to render (5)")
             if request.unit_type_1_5 is not None and request.unit_type_1_5.strip() != "":
                 await page.click('div#unitType_1_5_chosen')
                 dropdown_option = page.locator('div#unitType_1_5_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_5)
@@ -1162,13 +1168,12 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_5}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_5}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_5}")
-            await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
-            await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
-            results.append("Clicked plus icon to add more rent roll entries")
-            await page.wait_for_selector('div#unitType_1_6_chosen', timeout=10000)
-            results.append("Waited for new rent roll form to render")
-
-                    # Rent Roll Entry 1_6
+            if getattr(request, 'addUnit_1_6', False):
+                await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
+                await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
+                results.append(f"Clicked plus icon to add more rent roll entries (6)")
+                await page.wait_for_selector('div#unitType_1_6_chosen', timeout=10000)
+                results.append(f"Waited for new rent roll form to render (6)")
             if request.unit_type_1_6 is not None and request.unit_type_1_6.strip() != "":
                 await page.click('div#unitType_1_6_chosen')
                 dropdown_option = page.locator('div#unitType_1_6_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_6)
@@ -1194,13 +1199,12 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_6}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_6}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_6}")
-            await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
-            await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
-            results.append("Clicked plus icon to add more rent roll entries")
-            await page.wait_for_selector('div#unitType_1_7_chosen', timeout=10000)
-            results.append("Waited for new rent roll form to render")
-
-                    # Rent Roll Entry 1_7
+            if getattr(request, 'addUnit_1_7', False):
+                await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
+                await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
+                results.append(f"Clicked plus icon to add more rent roll entries (7)")
+                await page.wait_for_selector('div#unitType_1_7_chosen', timeout=10000)
+                results.append(f"Waited for new rent roll form to render (7)")
             if request.unit_type_1_7 is not None and request.unit_type_1_7.strip() != "":
                 await page.click('div#unitType_1_7_chosen')
                 dropdown_option = page.locator('div#unitType_1_7_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_7)
@@ -1226,13 +1230,12 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_7}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_7}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_7}")
-            await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
-            await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
-            results.append("Clicked plus icon to add more rent roll entries")
-            await page.wait_for_selector('div#unitType_1_8_chosen', timeout=10000)
-            results.append("Waited for new rent roll form to render")
-
-                    # Rent Roll Entry 1_8
+            if getattr(request, 'addUnit_1_8', False):
+                await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
+                await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
+                results.append(f"Clicked plus icon to add more rent roll entries (8)")
+                await page.wait_for_selector('div#unitType_1_8_chosen', timeout=10000)
+                results.append(f"Waited for new rent roll form to render (8)")
             if request.unit_type_1_8 is not None and request.unit_type_1_8.strip() != "":
                 await page.click('div#unitType_1_8_chosen')
                 dropdown_option = page.locator('div#unitType_1_8_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_8)
@@ -1258,13 +1261,12 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_8}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_8}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_8}")
-            await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
-            await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
-            results.append("Clicked plus icon to add more rent roll entries")
-            await page.wait_for_selector('div#unitType_1_9_chosen', timeout=10000)
-            results.append("Waited for new rent roll form to render")
-
-                    # Rent Roll Entry 1_9
+            if getattr(request, 'addUnit_1_9', False):
+                await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
+                await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
+                results.append(f"Clicked plus icon to add more rent roll entries (9)")
+                await page.wait_for_selector('div#unitType_1_9_chosen', timeout=10000)
+                results.append(f"Waited for new rent roll form to render (9)")
             if request.unit_type_1_9 is not None and request.unit_type_1_9.strip() != "":
                 await page.click('div#unitType_1_9_chosen')
                 dropdown_option = page.locator('div#unitType_1_9_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_9)
@@ -1290,13 +1292,12 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_9}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_9}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_9}")
-            await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
-            await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
-            results.append("Clicked plus icon to add more rent roll entries")
-            await page.wait_for_selector('div#unitType_1_10_chosen', timeout=10000)
-            results.append("Waited for new rent roll form to render")
-
-                    # Rent Roll Entry 1_10
+            if getattr(request, 'addUnit_1_10', False):
+                await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
+                await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
+                results.append(f"Clicked plus icon to add more rent roll entries (10)")
+                await page.wait_for_selector('div#unitType_1_10_chosen', timeout=10000)
+                results.append(f"Waited for new rent roll form to render (10)")
             if request.unit_type_1_10 is not None and request.unit_type_1_10.strip() != "":
                 await page.click('div#unitType_1_10_chosen')
                 dropdown_option = page.locator('div#unitType_1_10_chosen ul.chosen-results li.active-result', has_text=request.unit_type_1_10)
@@ -1322,11 +1323,6 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector(f'label[for="{request.rent_roll_vacant_no_1_10}"]', timeout=10000)
                 await page.click(f'label[for="{request.rent_roll_vacant_no_1_10}"]')
                 results.append(f"Clicked label for {request.rent_roll_vacant_no_1_10}")
-            await page.wait_for_selector('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]', state="visible")
-            await page.click('//span[contains(@class, "autosavePropertyRentRoll") and contains(@onclick, "cloneFormSection")]')
-            results.append("Clicked plus icon to add more rent roll entries")
-            await page.wait_for_selector('div#unitType_1_11_chosen', timeout=10000)
-            results.append("Waited for new rent roll form to render")
 
             # HOA and Occupancy Information
             if request.is_hoa_available_yes_1_is_hoa_available is not None and request.is_hoa_available_yes_1_is_hoa_available.strip() != "":
@@ -1383,10 +1379,7 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector('#proIncPh_1', timeout=10000)
                 await page.fill('#proIncPh_1', value=request.pro_inc_ph_1)
                 results.append(f"Filled #proIncPh_1 with {request.pro_inc_ph_1}")
-            # Click the Save button after filling pro_inc_ph_1 (not nested)
-            if request.pro_inc_ph_1 is not None and request.pro_inc_ph_1.strip() != "":
-                await page.click('#saveBtn')
-                results.append("Clicked Save button after filling pro_inc_ph_1")
+
 
             await browser.close()
     except Exception as e:
