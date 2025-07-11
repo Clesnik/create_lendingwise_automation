@@ -879,7 +879,7 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector(f'label[for="{request.have_professional_licences}"]', timeout=10000)
                 await page.click(f'label[for="{request.have_professional_licences}"]')
                 results.append(f"Clicked label for {request.have_professional_licences}")
-            if request.professional_licences is not None:
+            if request.professional_licences is not None and request.have_professional_licences != "haveBorProfLicencesNo":
                 await page.select_option('#borProfLicence', value=request.professional_licences)
                 results.append(f"Selected #borProfLicence with {request.professional_licences}")
             if request.liquid_assets is not None:
