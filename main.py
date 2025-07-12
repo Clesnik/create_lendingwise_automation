@@ -413,6 +413,7 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.select_option('#propDetailsProcess', value=request.prop_process)
                 results.append(f"Selected propDetailsProcess with {request.prop_process}")
             if request.primary_status is not None and request.primary_status != "":
+                await page.wait_for_selector(f'#primaryStatus option[value="{request.primary_status}"]', timeout=10000)
                 await page.select_option('#primaryStatus', value=request.primary_status)
                 results.append(f"Selected primaryStatus with {request.primary_status}")
             if request.lead_source is not None and request.lead_source != "":
