@@ -313,7 +313,7 @@ async def run_playwright_actions(request: ActionRequest):
             email_field = page.locator('input#userName')
             await email_field.click()
             results.append("Clicked username field")
-            if request.username is not None:
+            if request.username is not None and request.username != "":
                 await email_field.fill(request.username)
                 results.append(f"Filled username with {request.username}")
             pwd_input = page.locator('input#pwd')
@@ -321,193 +321,193 @@ async def run_playwright_actions(request: ActionRequest):
             results.append("Waited for password input")
             await pwd_input.click()
             results.append("Clicked password field")
-            if request.password is not None:
+            if request.password is not None and request.password != "":
                 await pwd_input.fill(request.password)
                 results.append(f"Filled password with {request.password}")
             await page.click("button#submitbutton")
             results.append("Clicked login button")
             await page.wait_for_url("https://app.brrrr.com/backoffice/LMRequest*", timeout=20000)
             results.append("Waited for post-login URL")
-            if request.branch_id is not None:
+            if request.branch_id is not None and request.branch_id != "":
                 await page.select_option('select#branchId', value=request.branch_id)
                 results.append(f"Selected branchId with {request.branch_id}")
-            if request.secondary_agent is not None:
+            if request.secondary_agent is not None and request.secondary_agent != "":
                 await page.select_option('select#secondaryAgentId', label=request.secondary_agent)
                 results.append(f"Selected secondaryAgentId with {request.secondary_agent}")
             await page.click('div#LMRClientType_chosen')
             results.append("Clicked LMRClientType_chosen")
-            if request.loan_program is not None:
+            if request.loan_program is not None and request.loan_program != "":
                 await page.click(f'ul.chosen-results li.active-result:has-text("{request.loan_program}")')
                 results.append(f"Selected loan program {request.loan_program}")
             await page.click('div#LMRInternalLoanProgram_chosen')
             results.append("Clicked LMRInternalLoanProgram_chosen")
-            if request.internal_program is not None:
+            if request.internal_program is not None and request.internal_program != "":
                 await page.click(f'ul.chosen-results li.active-result:has-text("{request.internal_program}")')
                 results.append(f"Selected internal program {request.internal_program}")
-            if request.prop_process is not None:
+            if request.prop_process is not None and request.prop_process != "":
                 await page.select_option('#propDetailsProcess', value=request.prop_process)
                 results.append(f"Selected propDetailsProcess with {request.prop_process}")
-            if request.primary_status is not None:
+            if request.primary_status is not None and request.primary_status != "":
                 await page.select_option('#primaryStatus', value=request.primary_status)
                 results.append(f"Selected primaryStatus with {request.primary_status}")
-            if request.lead_source is not None:
+            if request.lead_source is not None and request.lead_source != "":
                 await page.fill('#leadSource', value=request.lead_source)
                 results.append(f"Filled leadSource with {request.lead_source}")
-            if request.referring_party is not None:
+            if request.referring_party is not None and request.referring_party != "":
                 await page.fill('#referringParty', value=request.referring_party)
                 results.append(f"Filled referringParty with {request.referring_party}")
-            if request.pg_one_fname is not None:
+            if request.pg_one_fname is not None and request.pg_one_fname != "":
                 await page.fill('#borrowerFName', value=request.pg_one_fname)
                 results.append(f"Filled borrowerFName with {request.pg_one_fname}")
-            if request.pg_one_mname is not None:
+            if request.pg_one_mname is not None and request.pg_one_mname != "":
                 await page.fill('#borrowerMName', value=request.pg_one_mname)
                 results.append(f"Filled borrowerMName with {request.pg_one_mname}")
-            if request.pg_one_lname is not None:
+            if request.pg_one_lname is not None and request.pg_one_lname != "":
                 await page.fill('#borrowerLName', value=request.pg_one_lname)
                 results.append(f"Filled borrowerLName with {request.pg_one_lname}")
-            if request.pg_one_email is not None:
+            if request.pg_one_email is not None and request.pg_one_email != "":
                 await page.fill('#borrowerEmail', value=request.pg_one_email)
                 results.append(f"Filled borrowerEmail with {request.pg_one_email}")
-            if request.pg_one_cell is not None:
+            if request.pg_one_cell is not None and request.pg_one_cell != "":
                 await page.fill('#cellNo', value=request.pg_one_cell)
                 results.append(f"Filled cellNo with {request.pg_one_cell}")
-            if request.pg_one_work is not None:
+            if request.pg_one_work is not None and request.pg_one_work != "":
                 await page.fill('#workNumber', value=request.pg_one_work)
                 results.append(f"Filled workNumber with {request.pg_one_work}")
-            if request.pg_one_street is not None:
+            if request.pg_one_street is not None and request.pg_one_street != "":
                 await page.fill('#presentAddress', value=request.pg_one_street)
                 results.append(f"Filled presentAddress with {request.pg_one_street}")
-            if request.pg_one_unit is not None:
+            if request.pg_one_unit is not None and request.pg_one_unit != "":
                 await page.fill('#presentUnit', value=request.pg_one_unit)
                 results.append(f"Filled presentUnit with {request.pg_one_unit}")
-            if request.pg_one_city is not None:
+            if request.pg_one_city is not None and request.pg_one_city != "":
                 await page.fill('#presentCity', value=request.pg_one_city)
                 results.append(f"Filled presentCity with {request.pg_one_city}")
-            if request.pg_one_state is not None:
+            if request.pg_one_state is not None and request.pg_one_state != "":
                 await page.select_option('#presentState', value=request.pg_one_state)
                 results.append(f"Selected presentState with {request.pg_one_state}")
-            if request.pg_one_zip is not None:
+            if request.pg_one_zip is not None and request.pg_one_zip != "":
                 await page.fill('#presentZip', value=request.pg_one_zip)
                 results.append(f"Filled presentZip with {request.pg_one_zip}")
-            if request.pg_one_county is not None:
+            if request.pg_one_county is not None and request.pg_one_county != "":
                 await page.select_option('#presentCounty', value=request.pg_one_county)
                 results.append(f"Selected presentCounty with {request.pg_one_county}")
-            if request.pg_one_country is not None:
+            if request.pg_one_country is not None and request.pg_one_country != "":
                 await page.select_option('#presentCountry', value=request.pg_one_country)
                 results.append(f"Selected presentCountry with {request.pg_one_country}")
-            if request.mailing_street is not None:
+            if request.mailing_street is not None and request.mailing_street != "":
                 await page.fill('#mailingAddress', value=request.mailing_street)
                 results.append(f"Filled mailingAddress with {request.mailing_street}")
-            if request.mailing_unit is not None:
+            if request.mailing_unit is not None and request.mailing_unit != "":
                 await page.fill('#mailingUnit', value=request.mailing_unit)
                 results.append(f"Filled mailingUnit with {request.mailing_unit}")
-            if request.mailing_city is not None:
+            if request.mailing_city is not None and request.mailing_city != "":
                 await page.fill('#mailingCity', value=request.mailing_city)
                 results.append(f"Filled mailingCity with {request.mailing_city}")
-            if request.mailing_state is not None:
+            if request.mailing_state is not None and request.mailing_state != "":
                 await page.select_option('#mailingState', value=request.mailing_state)
                 results.append(f"Selected mailingState with {request.mailing_state}")
-            if request.mailing_zip is not None:
+            if request.mailing_zip is not None and request.mailing_zip != "":
                 await page.fill('#mailingZip', value=request.mailing_zip)
                 results.append(f"Filled mailingZip with {request.mailing_zip}")
-            if request.mailing_country is not None:
+            if request.mailing_country is not None and request.mailing_country != "":
                 await page.select_option('#mailingCountry', value=request.mailing_country)
                 results.append(f"Selected mailingCountry with {request.mailing_country}")
-            if request.pg_one_dob is not None:
+            if request.pg_one_dob is not None and request.pg_one_dob != "":
                 await page.fill('#borrowerDOB', value=request.pg_one_dob)
                 results.append(f"Filled borrowerDOB with {request.pg_one_dob}")
                 await page.click('body', position={'x': 10, 'y': 10})
                 results.append("Clicked body after DOB")
-            if request.pg_one_ssn is not None:
+            if request.pg_one_ssn is not None and request.pg_one_ssn != "":
                 await page.fill('#ssn', value=request.pg_one_ssn)
                 results.append(f"Filled ssn with {request.pg_one_ssn}")
-            if request.pg_one_marital_status is not None:
+            if request.pg_one_marital_status is not None and request.pg_one_marital_status != "":
                 await page.wait_for_selector(f'label[for="{request.pg_one_marital_status}"]', timeout=10000)
                 await page.click(f'label[for="{request.pg_one_marital_status}"]')
                 results.append(f"Clicked marital status {request.pg_one_marital_status}")
-            if request.pg_one_citizenship is not None:
+            if request.pg_one_citizenship is not None and request.pg_one_citizenship != "":
                 await page.wait_for_selector(f'label[for="{request.pg_one_citizenship}"]', timeout=10000)
                 await page.click(f'label[for="{request.pg_one_citizenship}"]')
                 results.append(f"Clicked citizenship {request.pg_one_citizenship}")
-            if request.pg_one_mid_fico is not None:
+            if request.pg_one_mid_fico is not None and request.pg_one_mid_fico != "":
                 await page.fill('#midFicoScore', value=request.pg_one_mid_fico)
                 results.append(f"Filled midFicoScore with {request.pg_one_mid_fico}")
-            if request.pg_one_fico_range is not None:
+            if request.pg_one_fico_range is not None and request.pg_one_fico_range != "":
                 await page.select_option('#borCreditScoreRange', value=request.pg_one_fico_range)
                 results.append(f"Selected borCreditScoreRange with {request.pg_one_fico_range}")
-            if request.borrower_type is not None:
+            if request.borrower_type is not None and request.borrower_type != "":
                 await page.select_option('#borrowerType', value=request.borrower_type)
                 results.append(f"Selected borrowerType with {request.borrower_type}")
-            if request.entity_name is not None:
+            if request.entity_name is not None and request.entity_name != "":
                 await page.fill('#entityName', value=request.entity_name)
                 results.append(f"Filled entityName with {request.entity_name}")
-            if request.trade_name is not None:
+            if request.trade_name is not None and request.trade_name != "":
                 await page.fill('#tradeName', value=request.trade_name)
                 results.append(f"Filled tradeName with {request.trade_name}")
-            if request.entity_type is not None:
+            if request.entity_type is not None and request.entity_type != "":
                 await page.select_option('#entityType', value=request.entity_type)
                 results.append(f"Selected entityType with {request.entity_type}")
-            if request.date_of_formation is not None:
+            if request.date_of_formation is not None and request.date_of_formation != "":
                 await page.fill('#dateOfFormation', value=request.date_of_formation)
                 results.append(f"Filled dateOfFormation with {request.date_of_formation}")
                 await page.click('body', position={'x': 10, 'y': 10})
                 results.append("Clicked body after dateOfFormation")
-            if request.state_of_formation is not None:
+            if request.state_of_formation is not None and request.state_of_formation != "":
                 await page.select_option('#entityStateOfFormation', value=request.state_of_formation)
                 results.append(f"Selected entityStateOfFormation with {request.state_of_formation}")
-            if request.ein_number is not None:
+            if request.ein_number is not None and request.ein_number != "":
                 await page.fill('#ENINo', value=request.ein_number)
                 results.append(f"Filled ENINo with {request.ein_number}")
-            if request.business_phone is not None:
+            if request.business_phone is not None and request.business_phone != "":
                 await page.fill('#businessPhone', value=request.business_phone)
                 results.append(f"Filled businessPhone with {request.business_phone}")
-            if request.entity_address is not None:
+            if request.entity_address is not None and request.entity_address != "":
                 await page.fill('#entityAddress', value=request.entity_address)
                 results.append(f"Filled entityAddress with {request.entity_address}")
-            if request.entity_city is not None:
+            if request.entity_city is not None and request.entity_city != "":
                 await page.fill('#entityCity', value=request.entity_city)
                 results.append(f"Filled entityCity with {request.entity_city}")
-            if request.entity_state is not None:
+            if request.entity_state is not None and request.entity_state != "":
                 await page.select_option('#entityState', value=request.entity_state)
                 results.append(f"Selected entityState with {request.entity_state}")
-            if request.entity_zip is not None:
+            if request.entity_zip is not None and request.entity_zip != "":
                 await page.fill('#entityZip', value=request.entity_zip)
                 results.append(f"Filled entityZip with {request.entity_zip}")
             # Member 0
-            if request.member_name_zero is not None:
+            if request.member_name_zero is not None and request.member_name_zero != "":
                 await page.fill('#memberName0', value=request.member_name_zero)
                 results.append(f"Filled #memberName0 with {request.member_name_zero}")
-            if request.member_title_zero is not None:
+            if request.member_title_zero is not None and request.member_title_zero != "":
                 await page.fill('#memberTitle0', value=request.member_title_zero)
                 results.append(f"Filled #memberTitle0 with {request.member_title_zero}")
-            if request.member_ownership_zero is not None:
+            if request.member_ownership_zero is not None and request.member_ownership_zero != "":
                 await page.fill('#memberOwnership0', value=request.member_ownership_zero)
                 results.append(f"Filled #memberOwnership0 with {request.member_ownership_zero}")
-            if request.member_address_zero is not None:
+            if request.member_address_zero is not None and request.member_address_zero != "":
                 await page.fill('#memberAddress0', value=request.member_address_zero)
                 results.append(f"Filled #memberAddress0 with {request.member_address_zero}")
-            if request.member_cell_zero is not None:
+            if request.member_cell_zero is not None and request.member_cell_zero != "":
                 await page.fill('#memberCell0', value=request.member_cell_zero)
                 results.append(f"Filled #memberCell0 with {request.member_cell_zero}")
-            if request.member_ssn_zero is not None:
+            if request.member_ssn_zero is not None and request.member_ssn_zero != "":
                 await page.fill('#memberSSN0', value=request.member_ssn_zero)
                 results.append(f"Filled #memberSSN0 with {request.member_ssn_zero}")
-            if request.member_dob_zero is not None:
+            if request.member_dob_zero is not None and request.member_dob_zero != "":
                 await page.fill('#memberDOB0', value=request.member_dob_zero)
                 results.append(f"Filled #memberDOB0 with {request.member_dob_zero}")
             await page.click('body', position={'x': 10, 'y': 10})
             results.append("Clicked body after memberDOB0")
-            if request.member_email_zero is not None:
+            if request.member_email_zero is not None and request.member_email_zero != "":
                 await page.fill('#memberEmail0', value=request.member_email_zero)
                 results.append(f"Filled #memberEmail0 with {request.member_email_zero}")
-            if request.member_fico_score_zero is not None:
+            if request.member_fico_score_zero is not None and request.member_fico_score_zero != "":
                 await page.fill('#memberCreditScore0', value=request.member_fico_score_zero)
                 results.append(f"Filled #memberCreditScore0 with {request.member_fico_score_zero}")
-            if request.member_guarantor_zero is not None:
+            if request.member_guarantor_zero is not None and request.member_guarantor_zero != "":
                 await page.wait_for_selector(f'label[for="{request.member_guarantor_zero}"]', timeout=10000)
                 await page.click(f'label[for="{request.member_guarantor_zero}"]')
                 results.append(f"Clicked label for {request.member_guarantor_zero}")
-            if request.member_citizenship_zero is not None:
+            if request.member_citizenship_zero is not None and request.member_citizenship_zero != "":
                 await page.wait_for_selector(f'label[for="{request.member_citizenship_zero}"]', timeout=10000)
                 await page.click(f'label[for="{request.member_citizenship_zero}"]')
                 results.append(f"Clicked label for {request.member_citizenship_zero}")
@@ -517,40 +517,40 @@ async def run_playwright_actions(request: ActionRequest):
             results.append("Waited 1s for new member form (0)")
 
             # Member 1
-            if request.member_name_one is not None:
+            if request.member_name_one is not None and request.member_name_one != "":
                 await page.fill('#memberName1', value=request.member_name_one)
                 results.append(f"Filled #memberName1 with {request.member_name_one}")
-            if request.member_title_one is not None:
+            if request.member_title_one is not None and request.member_title_one != "":
                 await page.fill('#memberTitle1', value=request.member_title_one)
                 results.append(f"Filled #memberTitle1 with {request.member_title_one}")
-            if request.member_ownership_one is not None:
+            if request.member_ownership_one is not None and request.member_ownership_one != "":
                 await page.fill('#memberOwnership1', value=request.member_ownership_one)
                 results.append(f"Filled #memberOwnership1 with {request.member_ownership_one}")
-            if request.member_address_one is not None:
+            if request.member_address_one is not None and request.member_address_one != "":
                 await page.fill('#memberAddress1', value=request.member_address_one)
                 results.append(f"Filled #memberAddress1 with {request.member_address_one}")
-            if request.member_cell_one is not None:
+            if request.member_cell_one is not None and request.member_cell_one != "":
                 await page.fill('#memberCell1', value=request.member_cell_one)
                 results.append(f"Filled #memberCell1 with {request.member_cell_one}")
-            if request.member_ssn_one is not None:
+            if request.member_ssn_one is not None and request.member_ssn_one != "":
                 await page.fill('#memberSSN1', value=request.member_ssn_one)
                 results.append(f"Filled #memberSSN1 with {request.member_ssn_one}")
-            if request.member_dob_one is not None:
+            if request.member_dob_one is not None and request.member_dob_one != "":
                 await page.fill('#memberDOB1', value=request.member_dob_one)
                 results.append(f"Filled #memberDOB1 with {request.member_dob_one}")
             await page.click('body', position={'x': 10, 'y': 10})
             results.append("Clicked body after memberDOB1")
-            if request.member_email_one is not None:
+            if request.member_email_one is not None and request.member_email_one != "":
                 await page.fill('#memberEmail1', value=request.member_email_one)
                 results.append(f"Filled #memberEmail1 with {request.member_email_one}")
-            if request.member_fico_score_one is not None:
+            if request.member_fico_score_one is not None and request.member_fico_score_one != "":
                 await page.fill('#memberCreditScore1', value=request.member_fico_score_one)
                 results.append(f"Filled #memberCreditScore1 with {request.member_fico_score_one}")
-            if request.member_guarantor_one is not None:
+            if request.member_guarantor_one is not None and request.member_guarantor_one != "":
                 await page.wait_for_selector(f'label[for="{request.member_guarantor_one}"]', timeout=10000)
                 await page.click(f'label[for="{request.member_guarantor_one}"]')
                 results.append(f"Clicked label for {request.member_guarantor_one}")
-            if request.member_citizenship_one is not None:
+            if request.member_citizenship_one is not None and request.member_citizenship_one != "":
                 await page.wait_for_selector(f'label[for="{request.member_citizenship_one}"]', timeout=10000)
                 await page.click(f'label[for="{request.member_citizenship_one}"]')
                 results.append(f"Clicked label for {request.member_citizenship_one}")
@@ -564,79 +564,79 @@ async def run_playwright_actions(request: ActionRequest):
             results.append("Clicked add member/officer (2)")
             await page.wait_for_timeout(1000)
             results.append("Waited 1s for new member form (2)")
-            if request.member_name_two is not None:
+            if request.member_name_two is not None and request.member_name_two != "":
                 await page.fill('#memberName2', value=request.member_name_two)
                 results.append(f"Filled #memberName2 with {request.member_name_two}")
-            if request.member_title_two is not None:
+            if request.member_title_two is not None and request.member_title_two != "":
                 await page.fill('#memberTitle2', value=request.member_title_two)
                 results.append(f"Filled #memberTitle2 with {request.member_title_two}")
-            if request.member_ownership_two is not None:
+            if request.member_ownership_two is not None and request.member_ownership_two != "":
                 await page.fill('#memberOwnership2', value=request.member_ownership_two)
                 results.append(f"Filled #memberOwnership2 with {request.member_ownership_two}")
-            if request.member_address_two is not None:
+            if request.member_address_two is not None and request.member_address_two != "":
                 await page.fill('#memberAddress2', value=request.member_address_two)
                 results.append(f"Filled #memberAddress2 with {request.member_address_two}")
-            if request.member_cell_two is not None:
+            if request.member_cell_two is not None and request.member_cell_two != "":
                 await page.fill('#memberCell2', value=request.member_cell_two)
                 results.append(f"Filled #memberCell2 with {request.member_cell_two}")
-            if request.member_ssn_two is not None:
+            if request.member_ssn_two is not None and request.member_ssn_two != "":
                 await page.fill('#memberSSN2', value=request.member_ssn_two)
                 results.append(f"Filled #memberSSN2 with {request.member_ssn_two}")
-            if request.member_dob_two is not None:
+            if request.member_dob_two is not None and request.member_dob_two != "":
                 await page.fill('#memberDOB2', value=request.member_dob_two)
                 results.append(f"Filled #memberDOB2 with {request.member_dob_two}")
                 await page.click('body', position={'x': 10, 'y': 10})
                 results.append("Clicked body after memberDOB2")
-            if request.member_email_two is not None:
+            if request.member_email_two is not None and request.member_email_two != "":
                 await page.fill('#memberEmail2', value=request.member_email_two)
                 results.append(f"Filled #memberEmail2 with {request.member_email_two}")
-            if request.member_fico_score_two is not None:
+            if request.member_fico_score_two is not None and request.member_fico_score_two != "":
                 await page.fill('#memberCreditScore2', value=request.member_fico_score_two)
                 results.append(f"Filled #memberCreditScore2 with {request.member_fico_score_two}")
-            if request.member_guarantor_two is not None:
+            if request.member_guarantor_two is not None and request.member_guarantor_two != "":
                 await page.wait_for_selector(f'label[for="{request.member_guarantor_two}"]', timeout=10000)
                 await page.click(f'label[for="{request.member_guarantor_two}"]')
                 results.append(f"Clicked label for {request.member_guarantor_two}")
-            if request.member_citizenship_two is not None:
+            if request.member_citizenship_two is not None and request.member_citizenship_two != "":
                 await page.wait_for_selector(f'label[for="{request.member_citizenship_two}"]', timeout=10000)
                 await page.click(f'label[for="{request.member_citizenship_two}"]')
                 results.append(f"Clicked label for {request.member_citizenship_two}")
             await page.click('span[onclick*="showAndHidePropertyValuationInfo"]')
             results.append("Clicked add member/officer (3)")
-            if request.member_name_three is not None:
+            if request.member_name_three is not None and request.member_name_three != "":
                 await page.fill('#memberName3', value=request.member_name_three)
                 results.append(f"Filled #memberName3 with {request.member_name_three}")
-            if request.member_title_three is not None:
+            if request.member_title_three is not None and request.member_title_three != "":
                 await page.fill('#memberTitle3', value=request.member_title_three)
                 results.append(f"Filled #memberTitle3 with {request.member_title_three}")
-            if request.member_ownership_three is not None:
+            if request.member_ownership_three is not None and request.member_ownership_three != "":
                 await page.fill('#memberOwnership3', value=request.member_ownership_three)
                 results.append(f"Filled #memberOwnership3 with {request.member_ownership_three}")
-            if request.member_address_three is not None:
+            if request.member_address_three is not None and request.member_address_three != "":
                 await page.fill('#memberAddress3', value=request.member_address_three)
                 results.append(f"Filled #memberAddress3 with {request.member_address_three}")
-            if request.member_cell_three is not None:
+            if request.member_cell_three is not None and request.member_cell_three != "":
                 await page.fill('#memberCell3', value=request.member_cell_three)
                 results.append(f"Filled #memberCell3 with {request.member_cell_three}")
-            if request.member_ssn_three is not None:
+            if request.member_ssn_three is not None and request.member_ssn_three != "":
                 await page.fill('#memberSSN3', value=request.member_ssn_three)
                 results.append(f"Filled #memberSSN3 with {request.member_ssn_three}")
-            if request.member_dob_three is not None:
+            if request.member_dob_three is not None and request.member_dob_three != "":
                 await page.fill('#memberDOB3', value=request.member_dob_three)
                 results.append(f"Filled #memberDOB3 with {request.member_dob_three}")
                 await page.click('body', position={'x': 10, 'y': 10})
                 results.append("Clicked body after memberDOB3")
-            if request.member_email_three is not None:
+            if request.member_email_three is not None and request.member_email_three != "":
                 await page.fill('#memberEmail3', value=request.member_email_three)
                 results.append(f"Filled #memberEmail3 with {request.member_email_three}")
-            if request.member_fico_score_three is not None:
+            if request.member_fico_score_three is not None and request.member_fico_score_three != "":
                 await page.fill('#memberCreditScore3', value=request.member_fico_score_three)
                 results.append(f"Filled #memberCreditScore3 with {request.member_fico_score_three}")
-            if request.member_guarantor_three is not None:
+            if request.member_guarantor_three is not None and request.member_guarantor_three != "":
                 await page.wait_for_selector(f'label[for="{request.member_guarantor_three}"]', timeout=10000)
                 await page.click(f'label[for="{request.member_citizenship_three}"]')
                 results.append(f"Clicked label for {request.member_guarantor_three}")
-            if request.member_citizenship_three is not None:
+            if request.member_citizenship_three is not None and request.member_citizenship_three != "":
                 await page.wait_for_selector(f'label[for="{request.member_citizenship_three}"]', timeout=10000)
                 await page.click(f'label[for="{request.member_citizenship_three}"]')
                 results.append(f"Clicked label for {request.member_citizenship_three}")
@@ -644,40 +644,40 @@ async def run_playwright_actions(request: ActionRequest):
             results.append("Clicked add member/officer (4)")
             await page.wait_for_timeout(1000)
             results.append("Waited 1s for new member form (4)")
-            if request.member_name_four is not None:
+            if request.member_name_four is not None and request.member_name_four != "":
                 await page.fill('#memberName4', value=request.member_name_four)
                 results.append(f"Filled #memberName4 with {request.member_name_four}")
-            if request.member_title_four is not None:
+            if request.member_title_four is not None and request.member_title_four != "":
                 await page.fill('#memberTitle4', value=request.member_title_four)
                 results.append(f"Filled #memberTitle4 with {request.member_title_four}")
-            if request.member_ownership_four is not None:
+            if request.member_ownership_four is not None and request.member_ownership_four != "":
                 await page.fill('#memberOwnership4', value=request.member_ownership_four)
                 results.append(f"Filled #memberOwnership4 with {request.member_ownership_four}")
-            if request.member_address_four is not None:
+            if request.member_address_four is not None and request.member_address_four != "":
                 await page.fill('#memberAddress4', value=request.member_address_four)
                 results.append(f"Filled #memberAddress4 with {request.member_address_four}")
-            if request.member_cell_four is not None:
+            if request.member_cell_four is not None and request.member_cell_four != "":
                 await page.fill('#memberCell4', value=request.member_cell_four)
                 results.append(f"Filled #memberCell4 with {request.member_cell_four}")
-            if request.member_ssn_four is not None:
+            if request.member_ssn_four is not None and request.member_ssn_four != "":
                 await page.fill('#memberSSN4', value=request.member_ssn_four)
                 results.append(f"Filled #memberSSN4 with {request.member_ssn_four}")
-            if request.member_dob_four is not None:
+            if request.member_dob_four is not None and request.member_dob_four != "":
                 await page.fill('#memberDOB4', value=request.member_dob_four)
                 results.append(f"Filled #memberDOB4 with {request.member_dob_four}")
                 await page.click('body', position={'x': 10, 'y': 10})
                 results.append("Clicked body after memberDOB4")
-            if request.member_email_four is not None:
+            if request.member_email_four is not None and request.member_email_four != "":
                 await page.fill('#memberEmail4', value=request.member_email_four)
                 results.append(f"Filled #memberEmail4 with {request.member_email_four}")
-            if request.member_fico_score_four is not None:
+            if request.member_fico_score_four is not None and request.member_fico_score_four != "":
                 await page.fill('#memberCreditScore4', value=request.member_fico_score_four)
                 results.append(f"Filled #memberCreditScore4 with {request.member_fico_score_four}")
-            if request.member_guarantor_four is not None:
+            if request.member_guarantor_four is not None and request.member_guarantor_four != "":
                 await page.wait_for_selector(f'label[for="{request.member_guarantor_four}"]', timeout=10000)
                 await page.click(f'label[for="{request.member_guarantor_four}"]')
                 results.append(f"Clicked label for {request.member_guarantor_four}")
-            if request.member_citizenship_four is not None:
+            if request.member_citizenship_four is not None and request.member_citizenship_four != "":
                 await page.wait_for_selector(f'label[for="{request.member_citizenship_four}"]', timeout=10000)
                 await page.click(f'label[for="{request.member_citizenship_four}"]')
                 results.append(f"Clicked label for {request.member_citizenship_four}")
@@ -685,40 +685,40 @@ async def run_playwright_actions(request: ActionRequest):
             results.append("Clicked add member/officer (5)")
             await page.wait_for_timeout(1000)
             results.append("Waited 1s for new member form (5)")
-            if request.member_name_five is not None:
+            if request.member_name_five is not None and request.member_name_five != "":
                 await page.fill('#memberName5', value=request.member_name_five)
                 results.append(f"Filled #memberName5 with {request.member_name_five}")
-            if request.member_title_five is not None:
+            if request.member_title_five is not None and request.member_title_five != "":
                 await page.fill('#memberTitle5', value=request.member_title_five)
                 results.append(f"Filled #memberTitle5 with {request.member_title_five}")
-            if request.member_ownership_five is not None:
+            if request.member_ownership_five is not None and request.member_ownership_five != "":
                 await page.fill('#memberOwnership5', value=request.member_ownership_five)
                 results.append(f"Filled #memberOwnership5 with {request.member_ownership_five}")
-            if request.member_address_five is not None:
+            if request.member_address_five is not None and request.member_address_five != "":
                 await page.fill('#memberAddress5', value=request.member_address_five)
                 results.append(f"Filled #memberAddress5 with {request.member_address_five}")
-            if request.member_cell_five is not None:
+            if request.member_cell_five is not None and request.member_cell_five != "":
                 await page.fill('#memberCell5', value=request.member_cell_five)
                 results.append(f"Filled #memberCell5 with {request.member_cell_five}")
-            if request.member_ssn_five is not None:
+            if request.member_ssn_five is not None and request.member_ssn_five != "":
                 await page.fill('#memberSSN5', value=request.member_ssn_five)
                 results.append(f"Filled #memberSSN5 with {request.member_ssn_five}")
-            if request.member_dob_five is not None:
+            if request.member_dob_five is not None and request.member_dob_five != "":
                 await page.fill('#memberDOB5', value=request.member_dob_five)
                 results.append(f"Filled #memberDOB5 with {request.member_dob_five}")
                 await page.click('body', position={'x': 10, 'y': 10})
                 results.append("Clicked body after memberDOB5")
-            if request.member_email_five is not None:
+            if request.member_email_five is not None and request.member_email_five != "":
                 await page.fill('#memberEmail5', value=request.member_email_five)
                 results.append(f"Filled #memberEmail5 with {request.member_email_five}")
-            if request.member_fico_score_five is not None:
+            if request.member_fico_score_five is not None and request.member_fico_score_five != "":
                 await page.fill('#memberCreditScore5', value=request.member_fico_score_five)
                 results.append(f"Filled #memberCreditScore5 with {request.member_fico_score_five}")
-            if request.member_guarantor_five is not None:
+            if request.member_guarantor_five is not None and request.member_guarantor_five != "":
                 await page.wait_for_selector(f'label[for="{request.member_guarantor_five}"]', timeout=10000)
                 await page.click(f'label[for="{request.member_guarantor_five}"]')
                 results.append(f"Clicked label for {request.member_guarantor_five}")
-            if request.member_citizenship_five is not None:
+            if request.member_citizenship_five is not None and request.member_citizenship_five != "":
                 await page.wait_for_selector(f'label[for="{request.member_citizenship_five}"]', timeout=10000)
                 await page.click(f'label[for="{request.member_citizenship_five}"]')
                 results.append(f"Clicked label for {request.member_citizenship_five}")
