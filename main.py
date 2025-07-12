@@ -395,16 +395,18 @@ async def run_playwright_actions(request: ActionRequest):
             if request.secondary_agent is not None and request.secondary_agent != "":
                 await page.select_option('select#secondaryAgentId', label=request.secondary_agent)
                 results.append(f"Selected secondaryAgentId with {request.secondary_agent}")
-            await page.click('div#LMRClientType_chosen')
-            results.append("Clicked LMRClientType_chosen")
+            # Loan Program dropdown
             if request.loan_program is not None and request.loan_program != "":
+                await page.click('div#LMRClientType_chosen')
+                results.append("Clicked LMRClientType_chosen")
                 await page.click(f'ul.chosen-results li.active-result:has-text("{request.loan_program}")')
                 results.append(f"Selected loan program {request.loan_program}")
-            await page.click('div#LMRInternalLoanProgram_chosen')
-            results.append("Clicked LMRInternalLoanProgram_chosen")
-            # Wait for the dropdown options to appear
-            await page.wait_for_selector('ul.chosen-results li.active-result', timeout=10000)
+
+            # Internal Program dropdown
             if request.internal_program is not None and request.internal_program != "":
+                await page.click('div#LMRInternalLoanProgram_chosen')
+                results.append("Clicked LMRInternalLoanProgram_chosen")
+                await page.wait_for_selector('ul.chosen-results li.active-result', timeout=10000)
                 await page.click(f'ul.chosen-results li.active-result:has-text("{request.internal_program}")')
                 results.append(f"Selected internal program {request.internal_program}")
             if request.prop_process is not None and request.prop_process != "":
