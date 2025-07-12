@@ -376,7 +376,7 @@ async def run_playwright_actions(request: ActionRequest):
                 results.append(f"Filled password with {request.password}")
             await page.click("button#submitbutton")
             results.append("Clicked login button")
-            await page.wait_for_url("https://app.brrrr.com/backoffice/LMRequest*", timeout=20000)
+            await page.wait_for_url("https://app.brrrr.com/backoffice/*", timeout=20000)
             results.append("Waited for post-login URL")
             if request.branch_id is not None and request.branch_id != "":
                 await page.select_option('select#branchId', value=request.branch_id)
@@ -1441,7 +1441,7 @@ async def run_playwright_actions(request: ActionRequest):
                 current_url = page.url
                 results.append(f"The URL is {current_url}")
 
-            await page.click('.loanFileButtonLink')
+            await page.click('#tab_HMLI')
             results.append('Loan Info button clicked')
             await page.wait_for_timeout(5000)
 
