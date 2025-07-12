@@ -1441,12 +1441,7 @@ async def run_playwright_actions(request: ActionRequest):
                 current_url = page.url
                 results.append(f"The URL is {current_url}")
 
-            # Wait for blocking overlay to disappear
-            await page.wait_for_selector('.blockUI.blockOverlay', state='detached', timeout=30000)
-            # Wait for the Loan Info button to be present
-            await page.wait_for_selector('#tab_HMLI .loanFileButtonLink', timeout=10000)
-            # Click the Loan Info button
-            await page.click('#tab_HMLI .loanFileButtonLink')
+            await page.click('.loanFileButtonLink')
             results.append('Loan Info button clicked')
             await page.wait_for_timeout(5000)
 
