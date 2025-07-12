@@ -299,6 +299,44 @@ class ActionRequest(BaseModel):
     addGuarantor1: Optional[bool] = False
     action_requested: Optional[str] = None
     update_url: Optional[str] = None
+    max_ltv: Optional[str] = None
+    min_dscr: Optional[str] = None
+    liquidity_requirement: Optional[str] = None
+    floor_rate: Optional[str] = None
+    prepayment_penalty: Optional[str] = None
+    funding_date: Optional[str] = None
+    loan_number: Optional[str] = None
+    rate_lock_expiration_date: Optional[str] = None
+    note_date: Optional[str] = None
+    rate_index: Optional[str] = None
+    spread: Optional[str] = None
+    rate_lock_period: Optional[str] = None
+    rate_lock_date: Optional[str] = None
+    rate_lock_extension: Optional[str] = None
+    cost_of_capital: Optional[str] = None
+    prepaid_interest_reserve: Optional[str] = None
+    lender_fee_rate_buy_down: Optional[str] = None
+    lender_fee_origination: Optional[str] = None
+    tpo_broker_fee: Optional[str] = None
+    tpo_referral_fee: Optional[str] = None
+    lender_fee_granite_inspection: Optional[str] = None
+    lender_credit: Optional[str] = None
+    construction_holdback_reserve: Optional[str] = None
+    interest_holdback_reserve: Optional[str] = None
+    lender_fee_admin: Optional[str] = None
+    tax_escrow: Optional[str] = None
+    lender_attorny_fee: Optional[str] = None
+    lender_reimbursement_appraisal: Optional[str] = None
+    lender_processing_fee: Optional[str] = None
+    lender_legal_close_fee: Optional[str] = None
+    lender_misc_fee: Optional[str] = None
+    lender_edr_report: Optional[str] = None
+    lender_redraw_fee: Optional[str] = None
+    lender_rate_lock_fee: Optional[str] = None
+    homeowner_insurance_escrow: Optional[str] = None
+    per_diem_start_date: Optional[str] = None
+    per_diem_end_date: Optional[str] = None
+
 
 async def run_playwright_actions(request: ActionRequest):
     results = []
@@ -1405,6 +1443,10 @@ async def run_playwright_actions(request: ActionRequest):
 
             await page.click('.loanFileButtonLink')
             results.append('Loan Info button clicked')
+
+            if request.max_ltv is not None and request.max_ltv != "":
+                await page.fill('#maxLTV', value=request.max_ltv)
+                results.append(f"Filled max_ltv with {request.max_ltv}")
 
             await browser.close()
     except Exception as e:
