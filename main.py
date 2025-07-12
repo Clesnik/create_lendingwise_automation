@@ -1464,6 +1464,10 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector('.jconfirm-buttons button:has-text("Yes")', timeout=2000)
                 await page.click('.jconfirm-buttons button:has-text("Yes")')
                 results.append('Clicked Yes on save confirmation popup')
+                # Take a screenshot after clicking Yes
+                await page.screenshot(path='after_popup_yes_click.png')
+                # Wait a bit for UI to update
+                await page.wait_for_timeout(2000)
             except Exception:
                 # Popup did not appear, continue
                 pass
