@@ -1445,7 +1445,7 @@ async def run_playwright_actions(request: ActionRequest):
             results.append('Loan Info button clicked')
 
             if request.max_ltv is not None and request.max_ltv != "":
-                await page.fill('#maxLTV', value=request.max_ltv)
+                await page.fill('#maxLTVPercent', value=request.max_ltv)
                 results.append(f"Filled max_ltv with {request.max_ltv}")
 
             await browser.close()
