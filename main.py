@@ -1403,6 +1403,9 @@ async def run_playwright_actions(request: ActionRequest):
                 current_url = page.url
                 results.append(f"The URL is {current_url}")
 
+            await page.click('.loanFileButtonLink')
+            results.append('Loan Info button clicked')
+
             await browser.close()
     except Exception as e:
         results.append(f"Error during automation: {str(e)}")
