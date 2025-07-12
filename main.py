@@ -392,6 +392,8 @@ async def run_playwright_actions(request: ActionRequest):
                 results.append(f"Selected loan program {request.loan_program}")
             await page.click('div#LMRInternalLoanProgram_chosen')
             results.append("Clicked LMRInternalLoanProgram_chosen")
+            # Wait for the dropdown options to appear
+            await page.wait_for_selector('ul.chosen-results li.active-result', timeout=10000)
             if request.internal_program is not None and request.internal_program != "":
                 await page.click(f'ul.chosen-results li.active-result:has-text("{request.internal_program}")')
                 results.append(f"Selected internal program {request.internal_program}")
