@@ -1388,15 +1388,15 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.wait_for_selector('#proIncPh_1', timeout=10000)
                 await page.fill('#proIncPh_1', value=request.pro_inc_ph_1)
                 results.append(f"Filled #proIncPh_1 with {request.pro_inc_ph_1}")
+            
+            # Click the Save button
+            await page.click('#saveBtn')
+            results.append("Clicked Save button")
 
             # After all actions, if action_requested == 'Create', get the current URL and return it
             if action_requested == 'Create':
                 current_url = page.url
                 results.append(f"The URL is {current_url}")
-            
-            # Click the Save button
-            await page.click('#saveBtn')
-            results.append("Clicked Save button")
 
             await browser.close()
     except Exception as e:
