@@ -378,6 +378,8 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.fill('#borrowerLName', value=request.pg_one_lname)
                 results.append(f"Filled borrowerLName with {request.pg_one_lname}")
             if request.pg_one_email is not None and request.pg_one_email != "":
+                if action_requested == "Update":
+                    await page.click('#updateExistingEmail')
                 await page.fill('#borrowerEmail', value=request.pg_one_email)
                 results.append(f"Filled borrowerEmail with {request.pg_one_email}")
             if request.pg_one_cell is not None and request.pg_one_cell != "":
