@@ -297,17 +297,26 @@ class ActionRequest(BaseModel):
     addUnit_1_9: Optional[bool] = False
     addUnit_1_10: Optional[bool] = False
     addGuarantor1: Optional[bool] = False
+    action_requested: Optional[str] = None
 
 async def run_playwright_actions(request: ActionRequest):
     results = []
+    # Add the action_requested variable, default to 'Create' if not present
+    action_requested = getattr(request, 'action_requested', 'Create')
     try:
         async with async_playwright() as p:
             browser = await p.chromium.launch(headless=True)
             context = await browser.new_context(viewport={'width': 1280, 'height': 720})
             page = await context.new_page()
             # --- Start of user-specified actions ---
-            await page.goto("https://app.brrrr.com/backoffice/LMRequest.php?eOpt=0&cliType=PC&tabOpt=QAPP&moduleCode=HMLO&supp=help")
-            results.append("Navigated to BRRRR backoffice login")
+            if action_requested == "Create":
+                await page.goto("https://app.brrrr.com/backoffice/LMRequest.php?eOpt=0&cliType=PC&tabOpt=QAPP&moduleCode=HMLO&supp=help")
+            elif action_requested == "Update":
+                await page.goto("https://app.brrrr.com/backoffice/myPipeline.php?empId=4766950812ac6aba&supp=help")
+            else:
+                # Default to Create if unknown
+                await page.goto("https://app.brrrr.com/backoffice/LMRequest.php?eOpt=0&cliType=PC&tabOpt=QAPP&moduleCode=HMLO&supp=help")
+            results.append(f"Navigated to BRRRR backoffice login for action: {action_requested}")
             await page.wait_for_selector('input#userName', timeout=10000)
             results.append("Waited for username input")
             email_field = page.locator('input#userName')
@@ -1380,6 +1389,10 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.fill('#proIncPh_1', value=request.pro_inc_ph_1)
                 results.append(f"Filled #proIncPh_1 with {request.pro_inc_ph_1}")
 
+            # After all actions, if action_requested == 'Create', get the current URL and return it
+            if action_requested == 'Create':
+                current_url = page.url
+                results.append(f"The URL is {current_url}")
 
             await browser.close()
     except Exception as e:
