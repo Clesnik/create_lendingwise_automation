@@ -1458,6 +1458,16 @@ async def run_playwright_actions(request: ActionRequest):
 
             await page.click('#tab_HMLI .loanFileButtonLink')
             results.append('Loan Info button clicked')
+
+            # If the confirm popup appears, click 'Yes'
+            try:
+                await page.wait_for_selector('.jconfirm-buttons button:has-text("Yes")', timeout=2000)
+                await page.click('.jconfirm-buttons button:has-text("Yes")')
+                results.append('Clicked Yes on save confirmation popup')
+            except Exception:
+                # Popup did not appear, continue
+                pass
+
             # Take a screenshot for debugging
             await page.screenshot(path='after_loan_info_click.png')
             # Wait longer for the field to appear
