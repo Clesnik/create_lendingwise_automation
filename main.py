@@ -413,8 +413,16 @@ async def run_playwright_actions(request: ActionRequest):
                 await page.select_option('#propDetailsProcess', value=request.prop_process)
                 results.append(f"Selected propDetailsProcess with {request.prop_process}")
             if request.primary_status is not None and request.primary_status != "":
-                await page.select_option('#primaryStatus', value=request.primary_status)
-                results.append(f"Selected primaryStatus with {request.primary_status}")
+                try:
+                    await page.select_option('#primaryStatus', value=request.primary_status)
+                    results.append(f"Selected primaryStatus with {request.primary_status}")
+                except Exception as e:
+                    # Take a screenshot for debugging
+                    await page.screenshot(path='primary_status_error.png')
+                    # Log available options
+                    options = await page.eval_on_selector_all('#primaryStatus option', 'els => els.map(e => e.value + ":" + e.textContent)')
+                    results.append(f"Failed to select primaryStatus. Available options: {options}")
+                    raise e
             if request.lead_source is not None and request.lead_source != "":
                 await page.fill('#leadSource', value=request.lead_source)
                 results.append(f"Filled leadSource with {request.lead_source}")
