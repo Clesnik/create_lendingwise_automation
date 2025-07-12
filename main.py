@@ -1393,6 +1393,10 @@ async def run_playwright_actions(request: ActionRequest):
             if action_requested == 'Create':
                 current_url = page.url
                 results.append(f"The URL is {current_url}")
+            
+            # Click the Save button
+            await page.click('#saveBtn')
+            results.append("Clicked Save button")
 
             await browser.close()
     except Exception as e:
