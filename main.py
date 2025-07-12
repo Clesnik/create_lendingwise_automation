@@ -298,6 +298,7 @@ class ActionRequest(BaseModel):
     addUnit_1_10: Optional[bool] = False
     addGuarantor1: Optional[bool] = False
     action_requested: Optional[str] = None
+    update_url: Optional[str] = None
 
 async def run_playwright_actions(request: ActionRequest):
     results = []
@@ -312,7 +313,9 @@ async def run_playwright_actions(request: ActionRequest):
             if action_requested == "Create":
                 await page.goto("https://app.brrrr.com/backoffice/LMRequest.php?eOpt=0&cliType=PC&tabOpt=QAPP&moduleCode=HMLO&supp=help")
             elif action_requested == "Update":
-                await page.goto("https://app.brrrr.com/backoffice/myPipeline.php?empId=4766950812ac6aba&supp=help")
+                update_url = getattr(request, 'update_url', None)
+                if update_url and update_url.strip() != "":
+                    await page.goto(update_url)
             else:
                 # Default to Create if unknown
                 await page.goto("https://app.brrrr.com/backoffice/LMRequest.php?eOpt=0&cliType=PC&tabOpt=QAPP&moduleCode=HMLO&supp=help")
