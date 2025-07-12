@@ -415,6 +415,8 @@ async def run_playwright_actions(request: ActionRequest):
             if request.primary_status is not None and request.primary_status != "":
                 await page.select_option('#primaryStatus', value=request.primary_status)
                 results.append(f"Selected primaryStatus with {request.primary_status}")
+                # Take a screenshot after selecting primary status
+                await page.screenshot(path='after_primary_status_select.png')
             if request.lead_source is not None and request.lead_source != "":
                 await page.fill('#leadSource', value=request.lead_source)
                 results.append(f"Filled leadSource with {request.lead_source}")
