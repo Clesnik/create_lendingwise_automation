@@ -1458,7 +1458,10 @@ async def run_playwright_actions(request: ActionRequest):
 
             await page.click('#tab_HMLI .loanFileButtonLink')
             results.append('Loan Info button clicked')
-            await page.wait_for_selector('#maxLTVPercent', timeout=10000)
+            # Take a screenshot for debugging
+            await page.screenshot(path='after_loan_info_click.png')
+            # Wait longer for the field to appear
+            await page.wait_for_selector('#maxLTVPercent', timeout=30000)
 
             if request.max_ltv is not None and request.max_ltv != "":
                 await page.fill('#maxLTVPercent', value=request.max_ltv)
