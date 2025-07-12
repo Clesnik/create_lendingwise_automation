@@ -376,9 +376,8 @@ async def run_playwright_actions(request: ActionRequest):
                 results.append(f"Filled password with {request.password}")
             await page.click("button#submitbutton")
             results.append("Clicked login button")
-            # Wait for dashboard element after login (Loan Info tab)
-            await page.wait_for_selector('#tab_HMLI', timeout=20000)
-            results.append("Waited for dashboard to load (Loan Info tab present)")
+            await page.wait_for_url("https://app.brrrr.com/backoffice/LMRequest*", timeout=20000)
+            results.append("Waited for post-login URL")
             if request.branch_id is not None and request.branch_id != "":
                 await page.select_option('select#branchId', value=request.branch_id)
                 results.append(f"Selected branchId with {request.branch_id}")
@@ -392,8 +391,6 @@ async def run_playwright_actions(request: ActionRequest):
                 results.append(f"Selected loan program {request.loan_program}")
             await page.click('div#LMRInternalLoanProgram_chosen')
             results.append("Clicked LMRInternalLoanProgram_chosen")
-            # Wait for the dropdown options to appear
-            await page.wait_for_selector('ul.chosen-results li.active-result', timeout=10000)
             if request.internal_program is not None and request.internal_program != "":
                 await page.click(f'ul.chosen-results li.active-result:has-text("{request.internal_program}")')
                 results.append(f"Selected internal program {request.internal_program}")
@@ -1444,7 +1441,7 @@ async def run_playwright_actions(request: ActionRequest):
                 current_url = page.url
                 results.append(f"The URL is {current_url}")
 
-            await page.click('#tab_HMLI')
+            await page.click('.loanFileButtonLink')
             results.append('Loan Info button clicked')
             await page.wait_for_timeout(5000)
 
