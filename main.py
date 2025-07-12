@@ -376,8 +376,19 @@ async def run_playwright_actions(request: ActionRequest):
                 results.append(f"Filled password with {request.password}")
             await page.click("button#submitbutton")
             results.append("Clicked login button")
-            await page.wait_for_url("https://app.brrrr.com/backoffice/LMRequest*", timeout=20000)
-            results.append("Waited for post-login URL")
+            try:
+                await page.wait_for_selector('#tab_HMLI', timeout=20000)
+                results.append("Waited for dashboard to load (Loan Info tab present)")
+            except Exception as e:
+                # Debug: Take screenshot, log URL and page content
+                screenshot_path = 'login_failure.png'
+                await page.screenshot(path=screenshot_path)
+                current_url = page.url
+                page_content = await page.content()
+                snippet = page_content[:1000]  # Only log the first 1000 chars
+                results.append(f"Login failed or dashboard not loaded. Screenshot saved as {screenshot_path}. Current URL: {current_url}")
+                results.append(f"Page content snippet: {snippet}")
+                raise e
             if request.branch_id is not None and request.branch_id != "":
                 await page.select_option('select#branchId', value=request.branch_id)
                 results.append(f"Selected branchId with {request.branch_id}")
@@ -391,6 +402,8 @@ async def run_playwright_actions(request: ActionRequest):
                 results.append(f"Selected loan program {request.loan_program}")
             await page.click('div#LMRInternalLoanProgram_chosen')
             results.append("Clicked LMRInternalLoanProgram_chosen")
+            # Wait for the dropdown options to appear
+            await page.wait_for_selector('ul.chosen-results li.active-result', timeout=10000)
             if request.internal_program is not None and request.internal_program != "":
                 await page.click(f'ul.chosen-results li.active-result:has-text("{request.internal_program}")')
                 results.append(f"Selected internal program {request.internal_program}")
@@ -1441,7 +1454,7 @@ async def run_playwright_actions(request: ActionRequest):
                 current_url = page.url
                 results.append(f"The URL is {current_url}")
 
-            await page.click('.loanFileButtonLink')
+            await page.click('#tab_HMLI')
             results.append('Loan Info button clicked')
             await page.wait_for_timeout(5000)
 
