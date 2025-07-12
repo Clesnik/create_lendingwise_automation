@@ -1456,9 +1456,9 @@ async def run_playwright_actions(request: ActionRequest):
                 current_url = page.url
                 results.append(f"The URL is {current_url}")
 
-            await page.click('#tab_HMLI')
+            await page.click('#tab_HMLI .loanFileButtonLink')
             results.append('Loan Info button clicked')
-            await page.wait_for_timeout(5000)
+            await page.wait_for_selector('#maxLTVPercent', timeout=10000)
 
             if request.max_ltv is not None and request.max_ltv != "":
                 await page.fill('#maxLTVPercent', value=request.max_ltv)
