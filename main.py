@@ -1443,6 +1443,7 @@ async def run_playwright_actions(request: ActionRequest):
 
             await page.click('.loanFileButtonLink')
             results.append('Loan Info button clicked')
+            await page.wait_for_timeout(5000)
 
             if request.max_ltv is not None and request.max_ltv != "":
                 await page.fill('#maxLTVPercent', value=request.max_ltv)
