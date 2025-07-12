@@ -376,8 +376,9 @@ async def run_playwright_actions(request: ActionRequest):
                 results.append(f"Filled password with {request.password}")
             await page.click("button#submitbutton")
             results.append("Clicked login button")
-            await page.wait_for_url("https://app.brrrr.com/backoffice/*", timeout=20000)
-            results.append("Waited for post-login URL")
+            # Wait for dashboard element after login (Loan Info tab)
+            await page.wait_for_selector('#tab_HMLI', timeout=20000)
+            results.append("Waited for dashboard to load (Loan Info tab present)")
             if request.branch_id is not None and request.branch_id != "":
                 await page.select_option('select#branchId', value=request.branch_id)
                 results.append(f"Selected branchId with {request.branch_id}")
